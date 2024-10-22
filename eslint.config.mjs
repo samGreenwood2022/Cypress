@@ -4,6 +4,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import cypressPlugin from 'eslint-plugin-cypress';
 
 // Use FlatCompat to convert old-style configs to flat config.
+//  ************NOTE:ESLINT DOESNT USE THIS FILE****************
 const compat = new FlatCompat();
 
 export default [
@@ -24,7 +25,7 @@ export default [
   {
     plugins: {
       cypress: cypressPlugin, // Correct Cypress plugin configuration
-    },CUNT!%^^
+    },
 
     env: {
       browser: true,  // Ensure browser environment is set
