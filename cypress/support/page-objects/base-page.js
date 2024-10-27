@@ -17,11 +17,11 @@ class BasePage {
         this.elements.sourceLogo()
         .click()
 
-    }
+    };
 
     // greet() {
     //   return `Hello, ${this.name}!`;
     // }
-  }
+  };
   
   export default BasePage;
