@@ -1,8 +1,10 @@
-class HomePage {
+import BasePage from "./base-page";
+
+class HomePage extends BasePage {
     // Define selectors
     elements = {
       searchInput: () => cy.get('[data-cy="searchFieldSearch"]')
-                            .first(),
+                           .first(),
     };
 
     enterSearchTerm(searchTerm) {
