@@ -5,11 +5,11 @@ import BasePage from '../../support/page-objects/base-page';
 describe('My First Test', () => {
   it('Visits the Dyson homepage on Source', () => {
 
-    const myClassInstance = new MyCustomClass('Test User');
-    const greeting = myClassInstance.greet();
-    const basePage = new BasePage();
+    const baseURL = 'https://source.thenbs.com/';  // Set the base URL
+    const basePage = new BasePage(baseURL);        // Pass baseURL to constructor
 
-    cy.visit('https://source.thenbs.com/');
+    basePage.visit();
+    
     cy.get('#onetrust-accept-btn-handler')
      .click();
     // Use of the robust data-cy attribute

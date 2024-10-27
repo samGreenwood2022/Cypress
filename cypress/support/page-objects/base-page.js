@@ -5,9 +5,13 @@ class BasePage {
         sourceLogo: () => cy.get('a.brand-primary.wrapper')
       };
       
-    constructor(basePage) {
-      this.basePage = basePage;
+    constructor(baseURL) {
+      this.baseURL = baseURL;
     }
+
+    visit() {
+        cy.visit(this.baseURL);  // Use baseURL to visit the page
+    };
 
     clickSourceLogo() {
         this.elements.sourceLogo()
