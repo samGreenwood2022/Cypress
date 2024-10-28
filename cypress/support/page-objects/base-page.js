@@ -1,27 +1,28 @@
 class BasePage {
-
-    // Define selectors
-    elements = {
-        sourceLogo: () => cy.get('a.brand-primary.wrapper')
-      };
-      
-    constructor(baseURL) {
+  constructor(baseURL) {
       this.baseURL = baseURL;
-    }
 
-    visit() {
-        cy.visit(this.baseURL);  // Use baseURL to visit the page
-    };
+  }
+//  This is another way to store a selector as a more easy to ready var
+  get sourceLogo() {
+      return cy.get('a.brand-primary.wrapper');
+  }
 
-    clickSourceLogo() {
-        this.elements.sourceLogo()
-        .click()
+  visit() {
+      cy.visit(this.baseURL);
+  }
 
-    };
+  clickSourceLogo() {
+      this.sourceLogo.click();
+  }
 
-    // greet() {
-    //   return `Hello, ${this.name}!`;
-    // }
-  };
-  
-  export default BasePage;
+  verifyUrlContents(text) {
+      cy.url().should('include', text);
+  }
+
+  verifyH1Text(expectedText) {
+      cy.get('h1').should('have.text', expectedText);
+  }
+}
+
+export default BasePage;

@@ -2,32 +2,30 @@ import HomePage from '../../support/page-objects/homepage';
 import BasePage from '../../support/page-objects/base-page';
 import ManufacturerHomePage from '../../support/page-objects/manufacturer-homepage';
 
-describe('My First Test', () => {
-  it('Visits the Dyson homepage on Source', () => {
-    const baseURL = 'https://source.thenbs.com/';  // Set the base URL
-    const basePage = new BasePage(baseURL);        // Pass baseURL to constructor
+describe('Dyson Homepage Tests', () => {
+  const baseURL = 'https://source.thenbs.com/';
+  const basePage = new BasePage(baseURL);
 
-    basePage.visit();
+  beforeEach(() => {
+    basePage.visit();                // Visit the base URL
+    HomePage.acceptCookies();        // Accept cookies
+        HomePage.enterSearchTerm('Dyson'); // Enter search term
+  });
 
-    cy.get('#onetrust-accept-btn-handler')
-      .click();
+  it('Verify URL contains expected text', () => {
+    basePage.verifyUrlContents('/manufacturer/dyson');
+  });
 
-    HomePage.enterSearchTerm('Dyson');
+  it('Verify the telephone link attribute', () => {
+    ManufacturerHomePage.verifyTelephoneLinkAttribute('tel:08003457788');
+  });
 
-    cy.contains('Dyson')
-      .click();
+  it('Verify the h1 title text on page', () => {
+    basePage.verifyH1Text('Dyson');
+  });
 
-    // Assertions
-    ManufacturerHomePage.verifyTelephoneLinkAttribute(); // Ensure this is a method call
-
-    cy.url().should('include', '/manufacturer/dyson'); // Assert that the url includes '/manufacturer/dyson'
-
-    // Verify that the 'h1' element contains the correct title
-    cy.get("h1").should('have.text', 'Dyson');
-
-    // Same as above
-    cy.get("h1").contains('Dyson');
-
+  it('Verify the Source Logo', () => {
     basePage.clickSourceLogo();
+    basePage.verifyH1Text('NBS SourceFind, select and specify');
   });
 });
