@@ -1,10 +1,10 @@
-import HomePage from "./base-page";
+import BasePage from "./base-page";
 
-class ManufacturerHomePage extends HomePage {
-    // Define selectors
+class ManufacturerHomePage extends BasePage {
+    // Define selectors on the manufacturer homepage
     elements = {
       telephoneLink: () => cy.get('a[action="telephone"]'),
-      favouritesIcon: () => cy.get('mat-icon[title="Select item"]'),
+      favouritesIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
     };
 
     verifyTelephoneLinkAttribute(telNo){
@@ -12,7 +12,7 @@ class ManufacturerHomePage extends HomePage {
             .and('have.attr', 'href', telNo) // Verify the href attribute and Tel protocol
     }
 
-    
+
 
 
 }

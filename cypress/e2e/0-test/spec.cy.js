@@ -9,14 +9,15 @@ describe('Dyson Homepage Tests', () => {
   beforeEach(() => {
     basePage.visit();                // Visit the base URL
     HomePage.acceptCookies();        // Accept cookies
-        HomePage.enterSearchTerm('Dyson'); // Enter search term
+    HomePage.enterSearchTerm('Dyson'); // Enter search term
   });
 
   it('Verify URL contains expected text', () => {
     basePage.verifyUrlContents('/manufacturer/dyson');
   });
 
-  it('Verify the telephone link attribute', () => {
+  it('Verify the telephone link attribute', () => {  
+    // Ensure the element exists, verify the href attribute and Tel protocol 
     ManufacturerHomePage.verifyTelephoneLinkAttribute('tel:08003457788');
   });
 
