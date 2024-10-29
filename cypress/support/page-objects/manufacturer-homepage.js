@@ -10,11 +10,12 @@ class ManufacturerHomePage extends BasePage {
     verifyTelephoneLinkAttribute(telNo){
         this.elements.telephoneLink().should('exist') // Ensure the element exists
             .and('have.attr', 'href', telNo) // Verify the href attribute and Tel protocol
-    }
+    };
 
-
-
-
+    verifyFavIcon(telNo){
+      this.elements.telephoneLink().should('exist') // Ensure the element exists
+          .and('have.attr', 'href', telNo) // Verify the href attribute and Tel protocol
+  };
 }
   
   export default new ManufacturerHomePage();
