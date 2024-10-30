@@ -1,6 +1,7 @@
 import HomePage from "../../support/page-objects/homepage";
 import BasePage from "../../support/page-objects/base-page";
 import ManufacturerHomePage from "../../support/page-objects/manufacturer-homepage";
+import manufacturerHomepage from "../../support/page-objects/manufacturer-homepage";
 
 describe("Dyson Homepage Tests", () => {
   const baseURL = "https://source.thenbs.com/";
@@ -31,4 +32,10 @@ describe("Dyson Homepage Tests", () => {
     basePage.verifyLinkHref("/");
     // basePage.verifyFavIcon('')
   });
+
+  it("Verify the manufacturer website link", () => {
+    manufacturerHomepage.verifyManufacturerWebLink('https://www.dyson.co.uk/commercial/overview/architects-designers');
+  });
+
+  
 });

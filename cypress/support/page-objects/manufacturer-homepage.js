@@ -6,6 +6,8 @@ class ManufacturerHomePage extends BasePage {
     telephoneLink: () => cy.get('a[action="telephone"]'),
     favouritesIcon: () => cy.get("app-add-to-collection-button").first(),
     permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
+    manufacturerWebLink: () => cy.get('a[action="company-website"]'),
+    contactManufacturerButton: () => cy.contains('Contact Manufacturer'),
   };
 
   verifyTelephoneLinkAttribute(telNo) {
@@ -20,7 +22,21 @@ class ManufacturerHomePage extends BasePage {
   }
 
   verifyFavPermalinkIcon() {
-    this.elements.favouritesIcon().should("exist"); // Ensure the element exists
+    this.elements.permalinkIcon().should("exist"); // Ensure the element exists
+  }
+
+  verifyManufacturerWebLink(href) {
+    this.elements
+      .manufacturerWebLink()
+      .should("exist") // Ensure the element exists
+      .and("have.attr", "href", href); // Ensure the element exists
+  }
+
+  verifyContactManuButton(href) {
+    this.elements
+      .contactManufacturerButton()
+      .should("exist") // Ensure the element exists
+      .and("have.attr", "href", href); // Ensure the element exists
   }
 }
 
