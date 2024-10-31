@@ -32,11 +32,11 @@ class ManufacturerHomePage extends BasePage {
       .and("have.attr", "href", href); // Ensure the element exists
   }
 
-  verifyContactManuButton(href) {
+  verifyContactManuButton(title) {
     this.elements
       .contactManufacturerButton()
       .should("exist") // Ensure the element exists
-      .and("have.attr", "href", href); // Ensure the element exists
+      .and("have.attr", "title", title); // Ensure the element exists
   }
 }
 

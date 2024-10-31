@@ -37,5 +37,9 @@ describe("Dyson Homepage Tests", () => {
     manufacturerHomepage.verifyManufacturerWebLink('https://www.dyson.co.uk/commercial/overview/architects-designers');
   });
 
+  it("Verify the contact manufacturer button", () => {
+    manufacturerHomepage.verifyContactManuButton('Contact Dyson');
+  });
+
   
 });
