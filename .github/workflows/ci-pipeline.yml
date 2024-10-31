@@ -25,4 +25,4 @@ jobs:
       run: npm install  # Adjust for your package manager if not using npm
 
     - name: Run Cypress Tests
-      run: npx cypress run --spec "cypress/e2e/01-test/**/*"
+      run: npx cypress run --spec "cypress/e2e/01-test/**/*.cy.js"
