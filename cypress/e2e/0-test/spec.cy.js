@@ -27,10 +27,7 @@ describe("Dyson Homepage Tests", () => {
   });
 
   it("Verify the Source Logo", () => {
-    // basePage.clickSourceLogo();
-    // basePage.verifyH1Text('NBS SourceFind, select and specify');
     basePage.verifyLinkHref("/");
-    // basePage.verifyFavIcon('')
   });
 
   it("Verify the manufacturer website link", () => {

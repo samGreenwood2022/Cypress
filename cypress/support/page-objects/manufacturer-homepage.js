@@ -7,7 +7,7 @@ class ManufacturerHomePage extends BasePage {
     favouritesIcon: () => cy.get("app-add-to-collection-button").first(),
     permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
     manufacturerWebLink: () => cy.get('a[action="company-website"]'),
-    contactManufacturerButton: () => cy.contains('Contact Manufacturer'),
+    contactManufacturerButton: () => cy.contains('button', 'Contact manufacturer'),
   };
 
   verifyTelephoneLinkAttribute(telNo) {
