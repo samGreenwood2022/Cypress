@@ -9,7 +9,7 @@ export default defineConfig({
       return config;
     },
     specPattern: [
-      "cypress/e2e/step_definitions/*.js",     // Pattern for JavaScript test files
+      "cypress/e2e/0-test/*.js",     // Pattern for JavaScript test files
       "cypress/e2e/*.feature" // Pattern for Cucumber feature files
     ],
   },
