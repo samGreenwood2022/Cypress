@@ -1,7 +1,6 @@
-import HomePage from "../../support/page-objects/homepage";
-import BasePage from "../../support/page-objects/base-page";
-import ManufacturerHomePage from "../../support/page-objects/manufacturer-homepage";
-import manufacturerHomepage from "../../support/page-objects/manufacturer-homepage";
+const HomePage = require("../../support/page-objects/homepage");
+const BasePage = require("../../support/page-objects/base-page");
+const ManufacturerHomePage = require("../../support/page-objects/manufacturer-homepage");
 
 describe("Dyson Homepage Tests", () => {
   const baseURL = "https://source.thenbs.com/";
@@ -15,6 +14,7 @@ describe("Dyson Homepage Tests", () => {
 
   it("Verify URL contains expected text", () => {
     basePage.verifyUrlContents("/manufacturer/dyson");
+    debugger;
   });
 
   it("Verify the telephone link attribute", () => {
@@ -37,6 +37,4 @@ describe("Dyson Homepage Tests", () => {
   it("Verify the contact manufacturer button", () => {
     manufacturerHomepage.verifyContactManuButton('Contact Dyson');
   });
-
-  
 });

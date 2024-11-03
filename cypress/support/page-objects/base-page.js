@@ -15,7 +15,7 @@ class BasePage {
   verifyLinkHref(hrefText) {
     this.elements
       .sourceLogo()
-      .find("a") // Locate the <a> tag within <app-product-logo-with-name>, usefull for targetting nested attributes
+      .find("a") // Locate the <a> tag within <app-product-logo-with-name>, useful for targeting nested attributes
       .should("have.attr", "href", hrefText);
   }
 
@@ -36,4 +36,4 @@ class BasePage {
   }
 }
 
-export default BasePage;
+module.exports = BasePage; // Export the class using CommonJS syntax

@@ -1,4 +1,4 @@
-import BasePage from "./base-page";
+const BasePage = require("./base-page"); // Use require to import the BasePage class
 
 class HomePage extends BasePage {
   // Define selectors
@@ -18,4 +18,4 @@ class HomePage extends BasePage {
   }
 }
 
-export default new HomePage();
+module.exports = new HomePage(); // Export an instance of HomePage using CommonJS syntax
