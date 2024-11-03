@@ -8,16 +8,15 @@ module.exports = {
       'cypress/e2e/**/*.feature', // Use '**' to match subdirectories
       'cypress/e2e/0-test/*.js' // Same for step definitions
     ],
-    setupNodeEvents(on, config) {
-      return cucumberPreprocessor.addCucumberPreprocessorPlugin(on, config).then(() => {
-        on(
-          "file:preprocessor",
-          createBundler({
-            plugins: [esbuildPreprocessor.createEsbuildPlugin(config)],
-          })
-        );
-        return config;
-      });
+    async setupNodeEvents(on, config) {
+      await cucumberPreprocessor.addCucumberPreprocessorPlugin(on, config);
+      on(
+        "file:preprocessor",
+        createBundler({
+          plugins: [esbuildPreprocessor.createEsbuildPlugin(config)],
+        })
+      );
+      return config;
     },
   },
 };
