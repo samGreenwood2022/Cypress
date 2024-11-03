@@ -26,10 +26,6 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
-"cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "cypress/support/step_definitions/*.js"
-  },
   "author": "S Greenwood",
   "license": "ISC",
   "description": "",
