@@ -1,4 +1,4 @@
-import BasePage from "./base-page";
+const BasePage = require("./base-page"); // Use require to import the BasePage class
 
 class ManufacturerHomePage extends BasePage {
   // Define selectors on the manufacturer homepage
@@ -16,7 +16,7 @@ class ManufacturerHomePage extends BasePage {
       .should("exist") // Ensure the element exists
       .and("have.attr", "href", telNo); // Verify the href attribute and Tel protocol
   }
-// can remove
+
   verifyFavIcon() {
     this.elements.favouritesIcon().should("exist"); // Ensure the element exists
   }
@@ -40,4 +40,4 @@ class ManufacturerHomePage extends BasePage {
   }
 }
 
-export default new ManufacturerHomePage();
+module.exports = new ManufacturerHomePage(); // Export an instance of ManufacturerHomePage using CommonJS syntax

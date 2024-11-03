@@ -13,8 +13,6 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
-import './commands'
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+// Import commands.js using CommonJS syntax:
+require("@badeball/cypress-cucumber-preprocessor");
+require("./commands"); // If you have custom commands
