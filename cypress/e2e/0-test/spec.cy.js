@@ -31,10 +31,10 @@ describe("Dyson Homepage Tests", () => {
   });
 
   it("Verify the manufacturer website link", () => {
-    manufacturerHomepage.verifyManufacturerWebLink('https://www.dyson.co.uk/commercial/overview/architects-designers');
+    ManufacturerHomePage.verifyManufacturerWebLink('https://www.dyson.co.uk/commercial/overview/architects-designers');
   });
 
   it("Verify the contact manufacturer button", () => {
-    manufacturerHomepage.verifyContactManuButton('Contact Dyson');
+    ManufacturerHomePage.verifyContactManuButton('Contact Dyson');
   });
 });
