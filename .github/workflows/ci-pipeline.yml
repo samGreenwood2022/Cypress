@@ -23,7 +23,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Specify your Node version
+        node-version: '20.18.0'  # Specify your Node version
 
     - name: Install dependencies
       run: npm install  # Adjust for your package manager if not using npm
