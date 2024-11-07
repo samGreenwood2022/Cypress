@@ -11,6 +11,7 @@ class ManufacturerHomePage extends BasePage {
   };
 
   verifyTelephoneLinkAttribute(telNo) {
+    debugger;
     this.elements
       .telephoneLink()
       .should("exist") // Ensure the element exists

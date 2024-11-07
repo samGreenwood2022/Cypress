@@ -2,26 +2,7 @@
   "name": "cypress",
   "version": "1.0.0",
   "type": "commonjs",
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "cypress/globals": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:cypress/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 12,
-      "sourceType": "commonjs"
-    },
-    "plugins": [
-      "cypress"
-    ],
-    "rules": {}
-  },
-  "main": "index.js",
-  "scripts": {
+    "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
