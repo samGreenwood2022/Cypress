@@ -14,7 +14,6 @@ describe("Dyson Homepage Tests", () => {
 
   it("Verify URL contains expected text", () => {
     basePage.verifyUrlContents("/manufacturer/dyson");
-    debugger;
   });
 
   it("Verify the telephone link attribute", () => {
