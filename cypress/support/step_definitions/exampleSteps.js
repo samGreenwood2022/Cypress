@@ -1,7 +1,6 @@
 const { Given, Then } = require("@badeball/cypress-cucumber-preprocessor");
 
 Given("I visit the home page", () => {
-  debugger;
   cy.visit("https://example.com");
 });
 
