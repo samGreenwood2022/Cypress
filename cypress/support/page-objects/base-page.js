@@ -28,6 +28,7 @@ class BasePage {
   }
 
   verifyUrlContents(text) {
+    debugger;
     cy.url().should("include", text);
   }
 
