@@ -6,5 +6,4 @@ Given("I visit the home page", () => {
 
 Then("I should see the welcome message", () => {
   cy.contains("Example Domain");
-  debugger;
 });
