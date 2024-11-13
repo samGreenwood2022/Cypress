@@ -23,6 +23,7 @@ describe("Dyson Homepage Tests", () => {
   });
 
   it("Verify the h1 title text on page", () => {
+    debugger;
     basePage.verifyH1Text("Dyson");
   });
 

@@ -9,7 +9,7 @@ Feature: Dyson Homepage Regression Tests
   Examples:
     | expectedText           |
     | /manufacturer/dyson/   |
-    | /manufacturer/dyson/   |
+    | /overview              |
 
 
   Scenario: Verify telephone link attribute
