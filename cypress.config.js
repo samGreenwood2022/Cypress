@@ -6,8 +6,8 @@ const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor
 module.exports = defineConfig({
   e2e: {
     specPattern: [
-      'cypress/e2e/**/*.feature', // Define path to feature files
-      'cypress/e2e/0-test/*.js', // Define path for regular specs
+      'cypress/e2e/5-features/*.feature', // Define path to feature files
+      'cypress/support/step_definitions/*.js', // Define path for regular specs
       // 'cypress/e2e/support/step_definitions/**/*.js', // Define the glue path
     ],
     stepDefinitions: 'cypress/support/step_definitions/*.js', // Explicit path to step definitions folder (adjust if necessary)
