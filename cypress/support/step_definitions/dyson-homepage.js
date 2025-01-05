@@ -29,3 +29,15 @@ Then(`The number will be correct, the href will be as expected, and the telephon
 Then(`The h1 title text will be as expected {string}`, (h1Text) => {
   manufacturerHomePage.verifyH1Text(h1Text);
 });
+
+Then(`The href attribute of the Dyson logo will be as expected {string}`, (href) => {
+  basePage.verifyLinkHref(href);
+});
+
+Then(`The manufacturer website link is correct {string}`, (url) => {
+    manufacturerHomePage.verifyManufacturerWebLink(url);
+});
+
+Then(`The button will display the correct text {string}`, (btnTxt) => {
+  manufacturerHomePage.verifyContactManufacturerBtnTxt(btnTxt);
+});

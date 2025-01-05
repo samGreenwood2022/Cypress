@@ -39,6 +39,17 @@ class ManufacturerHomePage extends BasePage {
       .should("exist") // Ensure the element exists
       .and("have.attr", "href", href); // Verify the href attribute
   }
+
+  verifyContactManufacturerBtnTxt(btnTxt) {
+    this.elements
+      .contactManufacturerButton()
+      .should("exist") // Ensure the element exists
+      .and("contain.text-", btnTxt); // Verify the text of the button
+
+  }
+
+
+
 }
 
 module.exports = ManufacturerHomePage;
