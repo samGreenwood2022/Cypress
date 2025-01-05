@@ -8,10 +8,12 @@ class HomePage extends BasePage {
   };
 
   enterSearchTerm(searchTerm) {
-    console.log(searchTerm); // Debugging step
-    this.elements.searchInput().type(searchTerm);
+    this.elements.searchInput()
+      .should('exist') // Ensure the element exists
+      .should('be.visible') // Ensure the element is visible
+      .type(searchTerm); // Type the search term
     cy.contains("Dyson").click();
-  }
+}
 
   acceptCookies() {
     this.elements.acceptCookiesButton().click();
