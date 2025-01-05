@@ -1,6 +1,6 @@
-const HomePage = require("../../page-objects/homepage");
-const BasePage = require("../../page-objects/base-page");
-const ManufacturerHomePage = require("../../page-objects/manufacturer-homepage");
+const HomePage = require("../page-objects/homepage");
+const BasePage = require("../page-objects/base-page");
+const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
 var { Given, Then } = require('@badeball/cypress-cucumber-preprocessor');
 
@@ -29,8 +29,3 @@ Then(`The number will be correct, the href will be as expected, and the telephon
 Then(`The h1 title text will be as expected {string}`, (h1Text) => {
   manufacturerHomePage.verifyH1Text(h1Text);
 });
-
-
-
-
-

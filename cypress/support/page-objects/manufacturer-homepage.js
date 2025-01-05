@@ -1,4 +1,4 @@
-const BasePage = require("./base-page"); // Use require to import the BasePage class
+const BasePage = require("./base-page");
 
 class ManufacturerHomePage extends BasePage {
   // Define selectors on the manufacturer homepage
@@ -8,6 +8,7 @@ class ManufacturerHomePage extends BasePage {
     permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
     manufacturerWebLink: () => cy.get('a[action="company-website"]'),
     contactManufacturerButton: () => cy.contains('button', 'Contact manufacturer'),
+    h1Title: () => cy.get('h1')
   };
 
   verifyTelephoneLinkAttribute(telNo) {
@@ -15,6 +16,13 @@ class ManufacturerHomePage extends BasePage {
       .telephoneLink()
       .should("exist") // Ensure the element exists
       .and("have.attr", "href", telNo); // Verify the href attribute and Tel protocol
+  }
+
+  verifyH1Text(expectedText) {
+    this.elements
+      .h1Title()
+      .should("exist") // Ensure the element exists
+      .and("have.text", expectedText); // Verify the text of the h1 element
   }
 
   verifyFavIcon() {
@@ -29,15 +37,8 @@ class ManufacturerHomePage extends BasePage {
     this.elements
       .manufacturerWebLink()
       .should("exist") // Ensure the element exists
-      .and("have.attr", "href", href); // Ensure the element exists
-  }
-
-  verifyContactManuButton(title) {
-    this.elements
-      .contactManufacturerButton()
-      .should("exist") // Ensure the element exists
-      .and("have.attr", "title", title); // Ensure the element exists
+      .and("have.attr", "href", href); // Verify the href attribute
   }
 }
 
-module.exports = new ManufacturerHomePage(); // Export an instance of ManufacturerHomePage using CommonJS syntax
+module.exports = ManufacturerHomePage;

@@ -15,7 +15,7 @@ Feature: Dyson Homepage Regression Tests
     Then The number will be correct, the href will be as expected, and the telephone protocol will correct "<telNo>"
 
     Examples:
-      | numberHref        | 
+      | telNo        | 
       | tel:08003457788   | 
 
   Scenario Outline: Verify the h1 title text on page
