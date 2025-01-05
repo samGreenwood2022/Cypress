@@ -30,7 +30,7 @@ Then(`The h1 title text will be as expected {string}`, (h1Text) => {
   manufacturerHomePage.verifyH1Text(h1Text);
 });
 
-Then(`The href attribute of the Dyson logo will be as expected {string}`, (href) => {
+Then(`The href attribute of the Source logo will be as expected {string}`, (href) => {
   basePage.verifyLinkHref(href);
 });
 

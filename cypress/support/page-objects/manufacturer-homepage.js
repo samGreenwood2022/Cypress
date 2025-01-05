@@ -44,7 +44,7 @@ class ManufacturerHomePage extends BasePage {
     this.elements
       .contactManufacturerButton()
       .should("exist") // Ensure the element exists
-      .and("contain.text-", btnTxt); // Verify the text of the button
+      .and("contain.text", btnTxt); // Verify the text of the button
 
   }
 

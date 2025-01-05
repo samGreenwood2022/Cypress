@@ -27,8 +27,8 @@ Feature: Dyson Homepage Regression Tests
       | h1Text        | 
       | Dyson         |
 
-  Scenario Outline: I verify the href attribute of the Dyson logo
-    Then The href attribute of the Dyson logo will be as expected "<href>"
+  Scenario Outline: I verify the href attribute of the Source logo
+    Then The href attribute of the Source logo will be as expected "<href>"
 
     Examples:
       | href       | 
