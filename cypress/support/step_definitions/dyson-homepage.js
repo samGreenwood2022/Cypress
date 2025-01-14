@@ -2,11 +2,19 @@ const HomePage = require("../page-objects/homepage");
 const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
-var { Given, Then } = require('@badeball/cypress-cucumber-preprocessor');
+var { Given, Then, Before } = require('@badeball/cypress-cucumber-preprocessor');
 
 const baseURL = "https://source.thenbs.com/";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
+
+const email = 'your-email@example.com'; // Define the email variable
+const password = 'your-password'; // Define the password variable
+
+Before(() => {
+  basePage.setEmail(email); // Set the email
+  basePage.setPassword(password); // Set the password
+});
 
 beforeEach(() => {
   basePage.visit(); // Visit the base URL
@@ -35,7 +43,8 @@ Then(`The href attribute of the Source logo will be as expected {string}`, (href
 });
 
 Then(`The manufacturer website link is correct {string}`, (url) => {
-    manufacturerHomePage.verifyManufacturerWebLink(url);
+  manufacturerHomePage.verifyManufacturerWebLink(url);
+  basePage.signIn();
 });
 
 Then(`The button will display the correct text {string}`, (btnTxt) => {
