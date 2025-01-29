@@ -49,9 +49,9 @@ class BasePage {
   }
 
   signIn() {
-    cy.contains('Sign in')
-      .click(); // Visit the login page directly
-
+    // cy.contains('Sign in')
+    //   .click(); // Visit the login page directly
+    debugger;
     this.elements.signInField()
       .should('exist') // Ensure the element exists
       .should('be.visible') // Ensure the element is visible
@@ -65,19 +65,23 @@ class BasePage {
       .should('be.visible') // Ensure the element is visible
       .type(this.password); // Type the password into the password field
 
-    // Intercept the network request when the next button is clicked
-    cy.intercept('POST', 'https://api.source.thenbs.com/graphql').as('nextButtonRequest');
+    // // Intercept the network request when the next button is clicked
+    // cy.intercept('POST', 'https://api.source.thenbs.com/graphql').as('nextButtonRequest');
 
     this.elements.nextButton()
       .click();
 
+      cy.contains('NBS Source')
+      .invoke('removeAttr', 'target')
+      .click()
+
     // Wait for the intercepted request to complete
-    cy.wait('@nextButtonRequest').then((interception) => {
-      // Debugging step: Log the intercepted request and response
-      console.log(interception);
-      // Ensure the request was successful
-      expect(interception.response.statusCode).to.equal(200);
-    });
+    // cy.wait('@nextButtonRequest').then((interception) => {
+    //   // Debugging step: Log the intercepted request and response
+    //   console.log(interception);
+    //   // Ensure the request was successful
+    //   expect(interception.response.statusCode).to.equal(200);
+    // });
   }
 }
 

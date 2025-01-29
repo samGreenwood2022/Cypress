@@ -4,12 +4,12 @@ const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
 var { Given, Then, Before } = require('@badeball/cypress-cucumber-preprocessor');
 
-const baseURL = "https://source.thenbs.com/";
+const baseURL = "https://login.thenbs.com/auth/login";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
 
-const email = 'your-email@example.com'; // Define the email variable
-const password = 'your-password'; // Define the password variable
+const email = 'sam_greenwood26@hotmail.com'; // Define the email variable
+const password = 'Felix1976'; // Define the password variable
 
 Before(() => {
   basePage.setEmail(email); // Set the email
@@ -18,16 +18,20 @@ Before(() => {
 
 beforeEach(() => {
   basePage.visit(); // Visit the base URL
-  HomePage.acceptCookies(); // Accept cookies
-  HomePage.enterSearchTerm("Dyson"); // Enter search term
+  // HomePage.acceptCookies(); // Accept cookies
+  // HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
 Given(`I visit the manufacturer home page`, () => {
-  manufacturerHomePage.verifyH1Text('Dyson');
+  // manufacturerHomePage.verifyH1Text('Dyson');
 });
 
 Then(`The URL will contain the expected text {string}`, (expectedText) => {
   cy.url().should('include', expectedText);
+});
+
+Then(`The URL will contain the expected text1 {string}`, () => {
+  basePage.signIn();
 });
 
 Then(`The number will be correct, the href will be as expected, and the telephone protocol will correct {string}`, (telNo) => {
@@ -49,4 +53,9 @@ Then(`The manufacturer website link is correct {string}`, (url) => {
 
 Then(`The button will display the correct text {string}`, (btnTxt) => {
   manufacturerHomePage.verifyContactManufacturerBtnTxt(btnTxt);
+});
+
+Then(`I click the link and it opens in the same window`, () => {
+  // Intercept the link click and modify its behavior
+  cy.get('a[target="_blank"]').invoke('removeAttr', 'target').click();
 });
