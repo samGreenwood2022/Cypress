@@ -4,14 +4,18 @@ const HomePage = require("../page-objects/homepage");
 const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
-var { Given, Then, Before } = require('@badeball/cypress-cucumber-preprocessor');
+var {
+  Given,
+  Then,
+  Before,
+} = require("@badeball/cypress-cucumber-preprocessor");
 
 const baseURL = "https://login.thenbs.com/auth/login";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
 
-const email = 'sam_greenwood26@hotmail.com'; // Define the email variable
-const password = 'Felix1976'; // Define the password variable
+const email = "sam_greenwood26@hotmail.com"; // Define the email variable
+const password = "Felix1976"; // Define the password variable
 
 Before(() => {
   basePage.setEmail(email); // Set the email
@@ -26,20 +30,26 @@ Given(`I sign into NBS and visit the manufacturer home page`, () => {
 });
 
 Then(`The URL will contain the expected text {string}`, (expectedText) => {
-  cy.url().should('include', expectedText);
+  cy.url().should("include", expectedText);
 });
 
-Then(`The number will be correct, the href will be as expected, and the telephone protocol will correct {string}`, (telNo) => {
-  manufacturerHomePage.verifyTelephoneLinkAttribute(telNo);
-});
+Then(
+  `The number will be correct, the href will be as expected, and the telephone protocol will correct {string}`,
+  (telNo) => {
+    manufacturerHomePage.verifyTelephoneLinkAttribute(telNo);
+  }
+);
 
 Then(`The h1 title text will be as expected {string}`, (h1Text) => {
   manufacturerHomePage.verifyH1Text(h1Text);
 });
 
-Then(`The href attribute of the Source logo will be as expected {string}`, (href) => {
-  basePage.verifyLinkHref(href);
-});
+Then(
+  `The href attribute of the Source logo will be as expected {string}`,
+  (href) => {
+    basePage.verifyLinkHref(href);
+  }
+);
 
 Then(`The manufacturer website link is correct {string}`, (url) => {
   manufacturerHomePage.verifyManufacturerWebLink(url);
@@ -51,17 +61,31 @@ Then(`The button will display the correct text {string}`, (btnTxt) => {
 
 Then(`The page should be accessible`, () => {
   cy.injectAxe(); // Inject the AXE script into the page
-  cy.checkA11y(null, null, (violations) => {
-    // Log the violations without failing the test
-    cy.task('log', violations);
-    violations.forEach((violation) => {
-      const nodes = Cypress.$(violation.nodes.map((node) => node.target).join(','));
-      Cypress.log({
-        name: 'a11y error!',
-        consoleProps: () => violation,
-        $el: nodes,
-        message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`
+  cy.checkA11y(
+    null,
+    null,
+    (violations) => {
+      // Log the violations without failing the test
+      cy.task("log", violations);
+      violations.forEach((violation) => {
+        const nodes = Cypress.$(
+          violation.nodes.map((node) => node.target).join(",")
+        );
+        Cypress.log({
+          name: "a11y error!",
+          consoleProps: () => violation,
+          $el: nodes,
+          message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`,
+        });
       });
-    });
-  }, { timeout: 10000 }); // Increase the timeout to 10 seconds
+    },
+    { timeout: 10000 }
+  ); // Increase the timeout to 10 seconds
+});
+
+// Add a new step definition for the API test
+Then(`I should get a 200 response from the example API`, () => {
+  cy.request("https://jsonplaceholder.cypress.io/comments") // Replace with your API endpoint
+    .its("status")
+    .should("equal", 200);
 });
