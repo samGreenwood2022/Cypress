@@ -2,7 +2,7 @@
   "name": "cypress",
   "version": "1.0.0",
   "type": "commonjs",
-    "scripts": {
+  "scripts": {
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
@@ -11,12 +11,13 @@
   "description": "",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^21.0.2",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
     "@cypress/webpack-preprocessor": "^6.0.2",
     "@testing-library/cypress": "^10.0.2",
     "cypress": "^13.15.0",
+    "cypress-axe": "^1.6.0",
     "globals": "^15.11.0",
     "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3"
+    "webpack-cli": "^5.1.4"
   }
 }

@@ -55,3 +55,8 @@ Then(`The manufacturer website link is correct {string}`, (url) => {
 Then(`The button will display the correct text {string}`, (btnTxt) => {
   manufacturerHomePage.verifyContactManufacturerBtnTxt(btnTxt);
 });
+
+Then(`The page should be accessible`, () => {
+  cy.injectAxe(); // Inject the AXE script into the page
+  cy.checkA11y(); // Run the accessibility checks
+});

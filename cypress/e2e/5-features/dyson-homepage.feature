@@ -55,3 +55,7 @@ Scenario Outline: Verify URL contains expected text
     Examples:
       | btnTxt                  | 
       | Contact manufacturer    |    
+
+    Scenario: I verify that the manufacturer homepage is accessible
+    Then The page should be accessible
+
