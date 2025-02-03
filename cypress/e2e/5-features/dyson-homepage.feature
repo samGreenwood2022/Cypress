@@ -1,9 +1,17 @@
 Feature: Dyson Homepage Regression Tests
 
-  Background: I visit the manufacturer home page
-    Given I visit the manufacturer home page
+  Background: Sign into NBS and visit the manufacturer home page
+    Given I sign into NBS and visit the manufacturer home page
 
+    
 
+Scenario Outline: Verify URL contains expected text
+    Then The URL will contain the expected text "<expectedText>"
+
+    Examples:
+      | expectedText           |
+      | /manufacturer/dyson/   |
+      # | /overview              |
 
   Scenario Outline: Verify URL contains expected text
     Then The URL will contain the expected text "<expectedText>"

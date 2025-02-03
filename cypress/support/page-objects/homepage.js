@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 const BasePage = require("./base-page"); // Use require to import the BasePage class
 
 class HomePage extends BasePage {

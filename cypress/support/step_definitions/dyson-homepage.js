@@ -1,21 +1,35 @@
+/// <reference types="cypress" />
+
 const HomePage = require("../page-objects/homepage");
 const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
-var { Given, Then } = require('@badeball/cypress-cucumber-preprocessor');
+var { Given, Then, Before } = require('@badeball/cypress-cucumber-preprocessor');
 
-const baseURL = "https://source.thenbs.com/";
+const baseURL = "https://login.thenbs.com/auth/login";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
 
-beforeEach(() => {
-  basePage.visit(); // Visit the base URL
-  HomePage.acceptCookies(); // Accept cookies
-  HomePage.enterSearchTerm("Dyson"); // Enter search term
+const email = 'sam_greenwood26@hotmail.com'; // Define the email variable
+const password = 'Felix1976'; // Define the password variable
+
+Before(() => {
+  basePage.setEmail(email); // Set the email
+  basePage.setPassword(password); // Set the password
 });
 
-Given(`I visit the manufacturer home page`, () => {
-  manufacturerHomePage.verifyH1Text('Dyson');
+// beforeEach(() => {
+//   basePage.visit(); // Visit the base URL
+//   basePage.signIn(); // Sign in
+//   // HomePage.acceptCookies(); // Accept cookies
+//   // HomePage.enterSearchTerm("Dyson"); // Enter search term
+// });
+
+Given(`I sign into NBS and visit the manufacturer home page`, () => {
+  basePage.visit(); // Visit the base URL
+  basePage.signIn(); // Sign in
+  HomePage.acceptCookies(); // Accept cookies
+  HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
 Then(`The URL will contain the expected text {string}`, (expectedText) => {
@@ -35,7 +49,7 @@ Then(`The href attribute of the Source logo will be as expected {string}`, (href
 });
 
 Then(`The manufacturer website link is correct {string}`, (url) => {
-    manufacturerHomePage.verifyManufacturerWebLink(url);
+  manufacturerHomePage.verifyManufacturerWebLink(url);
 });
 
 Then(`The button will display the correct text {string}`, (btnTxt) => {
