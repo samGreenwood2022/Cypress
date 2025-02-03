@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 const HomePage = require("../page-objects/homepage");
 const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
@@ -16,22 +18,22 @@ Before(() => {
   basePage.setPassword(password); // Set the password
 });
 
-beforeEach(() => {
-  basePage.visit(); // Visit the base URL
-  // HomePage.acceptCookies(); // Accept cookies
-  // HomePage.enterSearchTerm("Dyson"); // Enter search term
-});
+// beforeEach(() => {
+//   basePage.visit(); // Visit the base URL
+//   basePage.signIn(); // Sign in
+//   // HomePage.acceptCookies(); // Accept cookies
+//   // HomePage.enterSearchTerm("Dyson"); // Enter search term
+// });
 
-Given(`I visit the manufacturer home page`, () => {
-  // manufacturerHomePage.verifyH1Text('Dyson');
+Given(`I sign into NBS and visit the manufacturer home page`, () => {
+  basePage.visit(); // Visit the base URL
+  basePage.signIn(); // Sign in
+  HomePage.acceptCookies(); // Accept cookies
+  HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
 Then(`The URL will contain the expected text {string}`, (expectedText) => {
   cy.url().should('include', expectedText);
-});
-
-Then(`The URL will contain the expected text1 {string}`, () => {
-  basePage.signIn();
 });
 
 Then(`The number will be correct, the href will be as expected, and the telephone protocol will correct {string}`, (telNo) => {
@@ -48,14 +50,8 @@ Then(`The href attribute of the Source logo will be as expected {string}`, (href
 
 Then(`The manufacturer website link is correct {string}`, (url) => {
   manufacturerHomePage.verifyManufacturerWebLink(url);
-  basePage.signIn();
 });
 
 Then(`The button will display the correct text {string}`, (btnTxt) => {
   manufacturerHomePage.verifyContactManufacturerBtnTxt(btnTxt);
-});
-
-Then(`I click the link and it opens in the same window`, () => {
-  // Intercept the link click and modify its behavior
-  cy.get('a[target="_blank"]').invoke('removeAttr', 'target').click();
 });
