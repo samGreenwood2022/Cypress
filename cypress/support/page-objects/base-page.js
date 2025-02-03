@@ -51,7 +51,6 @@ class BasePage {
   signIn() {
     // cy.contains('Sign in')
     //   .click(); // Visit the login page directly
-    debugger;
     this.elements.signInField()
       .should('exist') // Ensure the element exists
       .should('be.visible') // Ensure the element is visible
