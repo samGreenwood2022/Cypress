@@ -53,9 +53,12 @@ Feature: Dyson Homepage Regression Tests
     Examples:
       | btnTxt               |
       | Contact manufacturer |
-
+ 
   Scenario: I verify that the manufacturer homepage is accessible
     Then The page should be accessible
 
   Scenario: I perform an api test and verify the response
-    Then I should get a 200 response from the example API
+    Then I should get a 200 response and output request to the console
+    And The response should contain the expected email address "Eliseo@gardner.biz"
+
+    
