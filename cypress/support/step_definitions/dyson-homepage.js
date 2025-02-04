@@ -1,27 +1,29 @@
 /// <reference types="cypress" />
 
+// Import page objects
 const HomePage = require("../page-objects/homepage");
 const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
-var {
-  Given,
-  Then,
-  Before,
-} = require("@badeball/cypress-cucumber-preprocessor");
+// Import Cucumber preprocessor functions
+var { Given, Then, Before } = require("@badeball/cypress-cucumber-preprocessor");
 
+// Define base URL and initialize page objects
 const baseURL = "https://login.thenbs.com/auth/login";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
 
-const email = "sam_greenwood26@hotmail.com"; // Define the email variable
-const password = "Felix1976"; // Define the password variable
+// Define email and password variables
+const email = "sam_greenwood26@hotmail.com";
+const password = "Felix1976";
 
+// Before hook to set email and password before each scenario
 Before(() => {
   basePage.setEmail(email); // Set the email
   basePage.setPassword(password); // Set the password
 });
 
+// Given step to sign into NBS and visit the manufacturer home page
 Given(`I sign into NBS and visit the manufacturer home page`, () => {
   basePage.visit(); // Visit the base URL
   basePage.signIn(); // Sign in
@@ -29,10 +31,12 @@ Given(`I sign into NBS and visit the manufacturer home page`, () => {
   HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
+// Then step to verify the URL contains the expected text
 Then(`The URL will contain the expected text {string}`, (expectedText) => {
   cy.url().should("include", expectedText);
 });
 
+// Then step to verify the telephone link attribute
 Then(
   `The number will be correct, the href will be as expected, and the telephone protocol will correct {string}`,
   (telNo) => {
@@ -40,52 +44,65 @@ Then(
   }
 );
 
+// Then step to verify the h1 title text
 Then(`The h1 title text will be as expected {string}`, (h1Text) => {
   manufacturerHomePage.verifyH1Text(h1Text);
 });
 
-Then(
-  `The href attribute of the Source logo will be as expected {string}`,
-  (href) => {
-    basePage.verifyLinkHref(href);
-  }
-);
+// Then step to verify the href attribute of the Source logo
+Then(`The href attribute of the Source logo will be as expected {string}`, (href) => {
+  basePage.verifyLinkHref(href);
+});
 
+// Then step to verify the manufacturer website link
 Then(`The manufacturer website link is correct {string}`, (url) => {
   manufacturerHomePage.verifyManufacturerWebLink(url);
 });
 
+// Then step to verify the contact manufacturer button text
 Then(`The button will display the correct text {string}`, (btnTxt) => {
   manufacturerHomePage.verifyContactManufacturerBtnTxt(btnTxt);
 });
 
+// Then step to check the page accessibility using AXE
 Then(`The page should be accessible`, () => {
   cy.injectAxe(); // Inject the AXE script into the page
-  cy.checkA11y(
-    null,
-    null,
-    (violations) => {
-      // Log the violations without failing the test
-      cy.task("log", violations);
-      violations.forEach((violation) => {
-        const nodes = Cypress.$(
-          violation.nodes.map((node) => node.target).join(",")
-        );
-        Cypress.log({
-          name: "a11y error!",
-          consoleProps: () => violation,
-          $el: nodes,
-          message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`,
-        });
+  cy.checkA11y(null, null, (violations) => {
+    // Log the violations without failing the test
+    cy.task('log', violations);
+    violations.forEach((violation) => {
+      const nodes = Cypress.$(
+        violation.nodes.map((node) => node.target).join(',')
+      );
+      Cypress.log({
+        name: 'a11y error!',
+        consoleProps: () => violation,
+        $el: nodes,
+        message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`,
       });
-    },
-    { timeout: 10000 }
-  ); // Increase the timeout to 10 seconds
+    });
+  }, { timeout: 10000 }); // Increase the timeout to 10 seconds
 });
 
-// Add a new step definition for the API test
-Then(`I should get a 200 response from the example API`, () => {
-  cy.request("https://jsonplaceholder.cypress.io/comments") // Replace with your API endpoint
-    .its("status")
-    .should("equal", 200);
+// Add a step definition for the API test
+Then(`I should get a 200 response and output request to the console`, () => {
+  cy.request("https://jsonplaceholder.cypress.io/comments") // Example endpoint
+    .then((response) => {
+      // Log the full body of the response
+      cy.log(JSON.stringify(response.body));
+      // Assert the status code
+      expect(response.status).to.equal(200);
+      // Store the response body in an alias
+      cy.wrap(response.body).as('apiResponse');
+    });
+});
+
+// Add a step definition to check the response contains the expected email address
+Then(`The response should contain the expected email address {string}`, (expectedEmail) => {
+  // Retrieve the response body from the alias
+  cy.get('@apiResponse').then((body) => {
+    // Assert that the response body contains the expected email address
+    const emails = body.map((comment) => comment.email);
+    expect(emails).to.include(expectedEmail);
+  });
 });
