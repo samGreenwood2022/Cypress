@@ -14,8 +14,12 @@ class HomePage extends BasePage {
       .should('exist') // Ensure the element exists
       .should('be.visible') // Ensure the element is visible
       .type(searchTerm); // Type the search term
-    cy.contains("Dyson").click();
-}
+  
+    // Wait for the search results to appear and ensure "Dyson" is visible
+    cy.contains("Dyson", { timeout: 10000 })
+      .should('be.visible') // Ensure the element is visible
+      .click(); // Click on the "Dyson" element
+  }
 
   acceptCookies() {
     this.elements.acceptCookiesButton().click();
