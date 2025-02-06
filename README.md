@@ -1,7 +1,7 @@
 This is a small Cypress project that runs various tests against https://source.thenbs.com/
 
 The main purpose of the project is to demonstraight the following:
-  Cucumber/Gherkin implementation,
+  Cucumber/Gherkin and Feature file implementation,
   Page Object Model,
   Repository created in GitHub,
   CI Pipleine Integration,
