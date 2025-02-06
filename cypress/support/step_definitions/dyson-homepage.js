@@ -33,7 +33,8 @@ Given(`I sign into NBS and visit the manufacturer home page`, () => {
 
 // Then step to verify the URL contains the expected text
 Then(`The URL will contain the expected text {string}`, (expectedText) => {
-  cy.url().should("include", expectedText);
+  // Wait for the URL to fully load
+  cy.location('href', { timeout: 10000 }).should('include', expectedText);
 });
 
 // Then step to verify the telephone link attribute
