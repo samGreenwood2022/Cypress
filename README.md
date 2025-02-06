@@ -5,6 +5,6 @@ The main purpose of the project is to demonstraight the following:
   Page Object Model,
   Repository created in GitHub,
   CI Pipleine Integration,
-  Implementation of the Axe-pluging for usability reporting,
+  Implementation of the Axe-plugin for usability reporting,
   API Testing,
   Different ways of interacting and verifying element attributes
