@@ -65,7 +65,7 @@ Then(`The button will display the correct text {string}`, (btnTxt) => {
 });
 
 // Then step to check the page accessibility using AXE
-Then(`The page should be accessible`, () => {
+Then(`The results of the accessibility checks will be output to the console`, () => {
   cy.injectAxe(); // Inject the AXE script into the page
   cy.checkA11y(null, null, (violations) => {
     // Log the violations without failing the test

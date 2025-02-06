@@ -46,8 +46,8 @@ Feature: Dyson Homepage Regression Tests
       | btnTxt               |
       | Contact manufacturer |
 
-  Scenario: I verify that the manufacturer homepage is accessible
-    Then The page should be accessible
+  Scenario: I run accessibility checks on the manufacturer homepage
+    Then The results of the accessibility checks will be output to the console
 
   Scenario: I perform an api test and verify the response
     Then I should get a 200 response and output request to the console
