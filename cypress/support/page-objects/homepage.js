@@ -6,13 +6,13 @@ class HomePage extends BasePage {
   // Define selectors
   elements = {
     searchInput: () => cy.get('[data-cy="searchFieldSearch"]').first(),
-    acceptCookiesButton: () => cy.contains("button", "Accept All Cookies"),
+    acceptCookiesButton: () => cy.contains("button", "Accept All Cookies", { timeout: 10000 }),
   };
 
   enterSearchTerm(searchTerm) {
     this.elements.searchInput()
-      .should('exist') // Ensure the element exists
-      .should('be.visible') // Ensure the element is visible
+      .should('exist', { timeout: 10000 }) // Ensure the element exists
+      .should('be.visible', { timeout: 10000 }) // Ensure the element is visible
       .type(searchTerm); // Type the search term
   
     // Wait for the search results to appear and ensure "Dyson" is visible

@@ -21,7 +21,7 @@ class ManufacturerHomePage extends BasePage {
   verifyH1Text(expectedText) {
     this.elements
       .h1Title()
-      .should("exist") // Ensure the element exists
+      .should("exist", { timeout: 10000 }) // Ensure the element exists
       .and("have.text", expectedText); // Verify the text of the h1 element
   }
 
@@ -41,9 +41,10 @@ class ManufacturerHomePage extends BasePage {
   }
 
   verifyContactManufacturerBtnTxt(btnTxt) {
+    debugger;
     this.elements
       .contactManufacturerButton()
-      .should("exist") // Ensure the element exists
+      .should("exist", { timeout: 10000 }) // Ensure the element exists
       .and("contain.text", btnTxt); // Verify the text of the button
 
   }

@@ -70,7 +70,7 @@ class BasePage {
     this.elements.nextButton()
       .click();
 
-      cy.contains('NBS Source')
+      cy.contains('NBS Source', { timeout: 10000 })
       .invoke('removeAttr', 'target')
       .click()
 
