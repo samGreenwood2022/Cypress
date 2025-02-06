@@ -18,7 +18,7 @@ class HomePage extends BasePage {
     // Wait for the search results to appear and ensure "Dyson" is visible
     cy.contains("Dyson", { timeout: 10000 })
       .should('be.visible') // Ensure the element is visible
-      .click(); // Click on the "Dyson" element
+      .click(); // Click on the 'Dyson' element
   }
 
   acceptCookies() {
