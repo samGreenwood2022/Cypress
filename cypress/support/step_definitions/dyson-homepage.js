@@ -65,6 +65,9 @@ Then(`The button will display the correct text {string}`, (btnTxt) => {
 });
 
 // Then step to check the page accessibility using AXE
+// The results of the accessibility checks will be output to the browsers console
+// You can also click the A11y failures in the cypress runner (there will be 8, but the test is set to not fail), 
+// which will then highlight the element and output a summary of the failure in the console 
 Then(`The results of the accessibility checks will be output to the console`, () => {
   cy.injectAxe(); // Inject the AXE script into the page
   cy.checkA11y(null, null, (violations) => {
