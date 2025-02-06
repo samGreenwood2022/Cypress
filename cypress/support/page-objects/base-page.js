@@ -3,17 +3,17 @@
 class BasePage {
   constructor(baseURL) {
     this.baseURL = baseURL;
-    this.email = 'sam_greenwood26@hotmail.com'; // Declare the email variable
-    this.password = 'Felix1976'; // Declare the password variable
+    this.email = "sam_greenwood26@hotmail.com"; // Declare the email variable
+    this.password = "Felix1976"; // Declare the password variable
   }
 
   elements = {
     sourceLogo: () => cy.get("app-product-logo-with-name").first(),
-    signInField: () => cy.get('#Identification_Email'), // Replace 'signInFieldId' with the actual ID of the sign-in field
-    passwordField: () => cy.get('#Authentication_Password'), // Replace 'passwordFieldId' with the actual ID of the password field
-    submitButton: () => cy.get('.submit-button'),// Selector for the submit button
-    nextButton: () => cy.get('#nextButton')// Selector for the submit button
-    
+    signInField: () => cy.get("#Identification_Email"), // Replace 'signInFieldId' with the actual ID of the sign-in field
+    passwordField: () => cy.get("#Authentication_Password"), // Replace 'passwordFieldId' with the actual ID of the password field
+    submitButton: () => cy.get(".submit-button"), // Selector for the submit button
+    nextButton: () => cy.get("#nextButton"), // Selector for the submit button
+
     // favouritesIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
   };
 
@@ -51,28 +51,28 @@ class BasePage {
   signIn() {
     // cy.contains('Sign in')
     //   .click(); // Visit the login page directly
-    this.elements.signInField()
-      .should('exist') // Ensure the element exists
-      .should('be.visible') // Ensure the element is visible
+    this.elements
+      .signInField()
+      .should("exist") // Ensure the element exists
+      .should("be.visible") // Ensure the element is visible
       .type(this.email); // Type the email into the sign-in field
 
-    this.elements.submitButton()
-      .click();
+    this.elements.submitButton().click();
 
-    this.elements.passwordField()
-      .should('exist') // Ensure the element exists
-      .should('be.visible') // Ensure the element is visible
+    this.elements
+      .passwordField()
+      .should("exist") // Ensure the element exists
+      .should("be.visible") // Ensure the element is visible
       .type(this.password); // Type the password into the password field
 
     // // Intercept the network request when the next button is clicked
     // cy.intercept('POST', 'https://api.source.thenbs.com/graphql').as('nextButtonRequest');
 
-    this.elements.nextButton()
-      .click();
+    this.elements.nextButton().click();
 
-      cy.contains('NBS Source', { timeout: 10000 })
-      .invoke('removeAttr', 'target')
-      .click()
+    cy.contains("NBS Source", { timeout: 10000 })
+      .invoke("removeAttr", "target")
+      .click();
 
     // Wait for the intercepted request to complete
     // cy.wait('@nextButtonRequest').then((interception) => {
