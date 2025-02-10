@@ -13,8 +13,6 @@ class BasePage {
     passwordField: () => cy.get("#Authentication_Password"), // Replace 'passwordFieldId' with the actual ID of the password field
     submitButton: () => cy.get(".submit-button"), // Selector for the submit button
     nextButton: () => cy.get("#nextButton"), // Selector for the submit button
-
-    // favouritesIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
   };
 
   verifyLinkHref(hrefText) {
@@ -49,8 +47,6 @@ class BasePage {
   }
 
   signIn() {
-    // cy.contains('Sign in')
-    //   .click(); // Visit the login page directly
     this.elements
       .signInField()
       .should("exist") // Ensure the element exists
@@ -65,22 +61,11 @@ class BasePage {
       .should("be.visible") // Ensure the element is visible
       .type(this.password); // Type the password into the password field
 
-    // // Intercept the network request when the next button is clicked
-    // cy.intercept('POST', 'https://api.source.thenbs.com/graphql').as('nextButtonRequest');
-
     this.elements.nextButton().click();
+    // navigate to the Source website where we will begin our tests
+    cy.visit('https://source.thenbs.com/')
+    
 
-    cy.contains("NBS Source", { timeout: 10000 })
-      .invoke("removeAttr", "target")
-      .click();
-
-    // Wait for the intercepted request to complete
-    // cy.wait('@nextButtonRequest').then((interception) => {
-    //   // Debugging step: Log the intercepted request and response
-    //   console.log(interception);
-    //   // Ensure the request was successful
-    //   expect(interception.response.statusCode).to.equal(200);
-    // });
   }
 }
 
