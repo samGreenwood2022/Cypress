@@ -1,9 +1,18 @@
+# The main purpose of the project is to demonstrate the following:
+#  - Cucumber/Gherkin and Feature file implementation
+#  - Page Object Model
+#  - Repository created in GitHub
+#  - CI Pipeline Integration
+#  - Implementation of the Axe-plugin for usability reporting
+#  - API Testing
+#  - Different ways of interacting and verifying element attributes
+
 Feature: Dyson Homepage Regression Tests
 
-  Background: Sign into NBS and visit the manufacturer home page
+  Background: Sign into my NBS account then visit the Dyson manufacturer homepage
     Given I sign into NBS and visit the manufacturer home page
 
-  Scenario Outline: Verify URL contains expected text
+  Scenario Outline: Verify the manufacturers homepage URL contains expected text
     Then The URL will contain the expected text "<expectedText>"
 
     Examples:
@@ -11,44 +20,27 @@ Feature: Dyson Homepage Regression Tests
       | /manufacturer/dyson/ |
       | /overview            |
 
-  Scenario Outline: I verify the telephone link attribute
-    Then The number will be correct, the href will be as expected, and the telephone protocol will correct "<telNo>"
+  Scenario: I verify the telephone link has the correct number, protocol and href
+    Then The number will be correct, the href will be as expected, and the telephone protocol will correct "tel:08003457788"
 
-    Examples:
-      | telNo           |
-      | tel:08003457788 |
+  Scenario: I verify the h1 title text on page is as expected
+    Then The h1 title text will be as expected "Dyson"
 
-  Scenario Outline: I verify the h1 title text on page
-    Then The h1 title text will be as expected "<h1Text>"
+  Scenario: I verify the href attribute of the Source logo is as expected
+    Then The href attribute of the Source logo will be as expected "/"
 
-    Examples:
-      | h1Text |
-      | Dyson  |
+  Scenario: I verify the external manufacturer link attribute contains the correct url
+    Then The manufacturer website link is correct "https://www.dyson.co.uk/commercial/overview/architects-designers"
 
-  Scenario Outline: I verify the href attribute of the Source logo
-    Then The href attribute of the Source logo will be as expected "<href>"
+  Scenario: I verify the contact manufacturer button shows the correct text
+    Then The button will display the correct text "Contact manufacturer"
 
-    Examples:
-      | href |
-      | /    |
-
-  Scenario Outline: I verify the manufacturer link attribute contains the correct url
-    Then The manufacturer website link is correct "<url>"
-
-    Examples:
-      | url                                                              |
-      | https://www.dyson.co.uk/commercial/overview/architects-designers |
-
-  Scenario Outline: I verify the contact manufacturer button shows the correct text
-    Then The button will display the correct text "<btnTxt>"
-
-    Examples:
-      | btnTxt               |
-      | Contact manufacturer |
-
-  Scenario: I run accessibility checks on the manufacturer homepage
+  Scenario: I run accessibility checks on the manufacturer homepage and report results to console
     Then The results of the accessibility checks will be output to the console
 
-  Scenario: I perform an api test and verify the response
+  Scenario: I perform an api test and verify the response and content is as expected
     Then I should get a 200 response and output request to the console
     And The response should contain the expected email address "Eliseo@gardner.biz"
+
+  Scenario: I verify the Dyson navigation bar has the correct tabs and expected links
+    Then The Dyson navigation bar should have the correct tabs and href links
