@@ -6,7 +6,7 @@
 #  - CI Pipeline Integration
 #  - Implementation of the Axe-plugin for usability reporting
 #  - API Testing
-#  - Different ways of interacting and verifying element attributes
+#  - Different ways of interacting and verifying UI element attributes
 
 Feature: Dyson Homepage Regression Tests
 
