@@ -4,8 +4,8 @@ Here is the spell-checked content of your README.md file:
 This is a small Cypress project that runs various tests against https://source.thenbs.com/
 
 The main purpose of the project is to demonstrate the following:
-  - Different ways of interacting and verifying element attributes
-  - Page Object Model
+  - Different ways of interacting with and verifying web element attributes
+  - Using the Page Object Model design pattern
   - Independent tests
   - Repository created in GitHub
   - CI Pipeline Integration
