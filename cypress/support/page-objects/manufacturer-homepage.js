@@ -77,7 +77,7 @@ class ManufacturerHomePage extends BasePage {
     const tabs = [
       { element: this.elements.overviewTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview" },
       { element: this.elements.productsTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products" },
-      { element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
+      //{ element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
       { element: this.elements.certificatesTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications" },
       { element: this.elements.literatureTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature" },
       { element: this.elements.caseStudiesTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies" },
