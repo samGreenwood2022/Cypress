@@ -12,4 +12,9 @@ The main purpose of the project is to demonstrate the following:
   - Implementation of the Axe-plugin for usability reporting
   - API Testing
   - Cucumber/Gherkin and Feature file implementation
+
+Installations Required
+VSCode
+Java (JDK) and set Environmental Variable path (https://www.youtube.com/watch?v=5bwEKlSoC90)
+NPM
 ```
