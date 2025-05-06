@@ -2,15 +2,16 @@
 
 // Import page objects
 const HomePage = require("../page-objects/homepage");
-const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
+const BasePage = require("../page-objects/base-page");
 
 // Import Cucumber preprocessor functions
 var { Given, Then, Before } = require("@badeball/cypress-cucumber-preprocessor");
 
 // Define base URL and initialize page objects
-const baseURL = "https://login.thenbs.com/auth/login";
-const basePage = new BasePage(baseURL);
+
+
+const basePage = new BasePage();
 const manufacturerHomePage = new ManufacturerHomePage();
 
 // Define email and password variables
