@@ -14,15 +14,15 @@ var { Given, Then, Before } = require("@badeball/cypress-cucumber-preprocessor")
 const basePage = new BasePage();
 const manufacturerHomePage = new ManufacturerHomePage();
 
-// Define email and password variables
-const email = "sam_greenwood26@hotmail.com";
-const password = "Felix1976";
+// // Define email and password variables
+// const email = "sam_greenwood26@hotmail.com";
+// const password = "Felix1976";
 
-// Before hook to set email and password before each scenario
-Before(() => {
-  basePage.setEmail(email); // Set the email
-  basePage.setPassword(password); // Set the password
-});
+// // Before hook to set email and password before each scenario
+// Before(() => {
+//   basePage.setEmail(); // Set the email
+//   basePage.setPassword(); // Set the password
+// });
 
 // Given step to sign into NBS and visit the manufacturer home page
 Given(`I sign into NBS and visit the manufacturer home page`, () => {

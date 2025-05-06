@@ -2,9 +2,9 @@
 
 class BasePage {
   constructor() {
-    this.baseURL = "https://login.thenbs.com/auth/login";
-    this.email = "sam_greenwood26@hotmail.com"; // Declare the email variable
-    this.password = "Felix1976"; // Declare the password variable
+    this.baseURL = "https://login.thenbs.com/auth/login"; // Base URL for the application
+    this.email = "sam_greenwood26@hotmail.com"; // Default email for login
+    this.password = "Felix1976"; // Default password for login
   }
 
   // Define selectors for elements on the page
@@ -44,23 +44,13 @@ class BasePage {
     cy.get("h1").should("have.text", expectedText); // Verify the h1 title text
   }
 
-  // Method to set the email variable
-  setEmail(email) {
-    this.email = email; // Set the email variable
-  }
-
-  // Method to set the password variable
-  setPassword(password) {
-    this.password = password; // Set the password variable
-  }
-
   // Method to sign in to the application
   signIn() {
     this.elements
       .signInField()
       .should("exist") // Ensure the sign-in field exists
       .should("be.visible") // Ensure the sign-in field is visible
-      .type(this.email); // Type the email into the sign-in field
+      .type(this.email); // Use the email defined in the constructor
 
     this.elements.submitButton().click(); // Click the submit button
 
@@ -68,7 +58,7 @@ class BasePage {
       .passwordField()
       .should("exist") // Ensure the password field exists
       .should("be.visible") // Ensure the password field is visible
-      .type(this.password); // Type the password into the password field
+      .type(this.password); // Use the password defined in the constructor
 
     this.elements.nextButton().click(); // Click the next button
 
