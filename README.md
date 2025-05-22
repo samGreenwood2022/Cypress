@@ -15,6 +15,6 @@ The main purpose of the project is to demonstrate the following:
 
 Installations Required
 VSCode
-Java (JDK) and set Environmental Variable path (https://www.youtube.com/watch?v=5bwEKlSoC90)
-NPM
+Node.js
+Git
 ```
