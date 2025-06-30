@@ -9,6 +9,7 @@ module.exports = defineConfig({
   e2e: {
     specPattern: [
       'cypress/e2e/5-features/*.feature', // Define path to feature files
+      'cypress/e2e/1-getting-started/*.js', // Define path to feature files
       //'cypress/support/step_definitions/*.js', // Define path for regular specs
       // 'cypress/e2e/support/step_definitions/**/*.js', // Define the glue path
     ],
