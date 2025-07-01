@@ -91,6 +91,10 @@ class ManufacturerHomePage extends BasePage {
         .and("have.attr", "href", tab.href); // Verify the href attribute of the tab
     });
   }
+
+  verifyImageSnapshot() {
+    cy.matchImageSnapshot('dyson-homepage'); // Verify the image snapshot
+  }
 }
 
 module.exports = ManufacturerHomePage;

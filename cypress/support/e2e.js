@@ -16,3 +16,6 @@
 // Import commands.js using CommonJS syntax:
 require("@badeball/cypress-cucumber-preprocessor");
 require("./commands"); // If you have custom commands
+
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+addMatchImageSnapshotCommand();
