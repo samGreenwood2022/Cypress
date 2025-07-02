@@ -36,8 +36,8 @@ Feature: Dyson Homepage Regression Tests
   # Scenario: I verify the contact manufacturer button shows the correct text
   #   Then The button will display the correct text "Contact manufacturer"
 
-  # Scenario: I run accessibility checks on the manufacturer homepage and report results to console
-  #   Then The results of the accessibility checks will be output to the console
+  Scenario: I run accessibility checks on the manufacturer homepage and report results to console
+    Then The results of the accessibility checks will be output to the console
 
   # Scenario: I perform an api test and verify the response and content is as expected
   #   Then I should get a 200 response and output request to the console
@@ -48,3 +48,6 @@ Feature: Dyson Homepage Regression Tests
 
   Scenario: I verify that the baseline image snapshot matches the current image snapshot
     Then The baseline image snapshot should match the current image snapshot
+
+  Scenario: We will take a look at whats returned in our API response
+    Then The API response should contain the expected data

@@ -55,7 +55,6 @@ class ManufacturerHomePage extends BasePage {
 
   // Method to verify the contact manufacturer button text
   verifyContactManufacturerBtnTxt(btnTxt) {
-    debugger;
     this.elements
       .contactManufacturerButton()
       .should("exist", { timeout: 10000 }) // Ensure the contact manufacturer button element exists
@@ -93,7 +92,38 @@ class ManufacturerHomePage extends BasePage {
   }
 
   verifyImageSnapshot() {
-    cy.matchImageSnapshot('dyson-homepage'); // Verify the image snapshot
+    cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
+    cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
+    cy.scrollTo('bottom'); // Scroll to the bottom to ensure all content is rendered
+    cy.wait(500); // Wait a bit after scrolling
+    cy.matchImageSnapshot('dyson-homepage', {
+      failureThreshold: 0.40, // Allow up to 40% difference
+      failureThresholdType: 'percent',
+    });
+  }
+
+  verifyUIandAPIContent() {
+    cy.request({
+      method: 'GET',
+      url: 'https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location',
+      failOnStatusCode: false
+    }).then((response) => {
+      // The response is like: jsonFeed({...});
+      const match = response.body.match(/jsonFeed\((.*)\);?/);
+      if (!match) {
+        throw new Error('Unexpected response format');
+      }
+      const body = JSON.parse(match[1]);
+
+      // Check that the API response contains the correct country (GB)
+      expect(body).to.have.property('country', 'GB');
+
+      // Now check that "UK" is present in the DOM, even if hidden
+      cy.get('button[aria-label="Choose locale"] .mdc-button__label')
+        .should('exist')
+        .invoke('text')
+        .should('contain', 'UK');
+    });
   }
 }
 

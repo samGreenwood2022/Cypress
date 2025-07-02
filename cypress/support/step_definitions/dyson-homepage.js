@@ -124,3 +124,10 @@ Then(`The Dyson navigation bar should have the correct tabs and href links`, () 
 Then(`The baseline image snapshot should match the current image snapshot`, () => {
   manufacturerHomePage.verifyImageSnapshot(); // Verify the image snapshot
 });
+
+
+// Then step definition to verify our different API test is working
+Then(`The API response should contain the expected data`, () => {
+  manufacturerHomePage.verifyUIandAPIContent();
+});
+
