@@ -127,7 +127,7 @@ Then(`The baseline image snapshot should match the current image snapshot`, () =
 
 
 // Then step definition to verify our different API test is working
-Then(`The API response should contain the expected data`, () => {
+Then(`The API response will contain expected data and UI will show location as GB`, () => {
   manufacturerHomePage.verifyUIandAPIContent();
 });
 
