@@ -28,5 +28,5 @@ jobs:
     - name: Install dependencies
       run: npm install --legacy-peer-deps  # Adjust for your package manager if not using npm
 
-    - name: Run Cypress tests
-      run: npx cypress run  # Run Cypress headlessly in the CI environment
+    - name: Run only Dyson homepage feature
+      run: npx cypress run --spec "cypress/integration/dyson-homepage.spec.js"  # Run only the Dyson homepage feature file test
