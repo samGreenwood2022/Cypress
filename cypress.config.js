@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
 const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
+const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin'); // <-- Add this line
 const fs = require('fs');
 const path = require('path');
 
@@ -9,6 +10,7 @@ module.exports = defineConfig({
   e2e: {
     specPattern: [
       'cypress/e2e/5-features/*.feature', // Define path to feature files
+      'cypress/e2e/1-getting-started/*.js', // Define path to feature files
       //'cypress/support/step_definitions/*.js', // Define path for regular specs
       // 'cypress/e2e/support/step_definitions/**/*.js', // Define the glue path
     ],
@@ -24,6 +26,9 @@ module.exports = defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
+
+      // Register the cypress-image-snapshot plugin
+      addMatchImageSnapshotPlugin(on, config);
 
       // Register the custom log task
       on('task', {

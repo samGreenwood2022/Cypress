@@ -10,8 +10,8 @@
 
 Feature: Dyson Homepage Regression Tests
 
-  Background: Sign into my NBS account then visit the Dyson manufacturer homepage
-    Given I sign into NBS and visit the manufacturer home page
+  Background: Navigate to the Dyson manufacturer homepage
+    Given I navigate to the Dyson manufacturer homepage
 
   Scenario Outline: Verify the manufacturers homepage URL contains expected text
     Then The URL will contain the expected text "<expectedText>"
@@ -45,3 +45,9 @@ Feature: Dyson Homepage Regression Tests
 
   Scenario: I verify the Dyson navigation bar has the correct tabs and expected links
     Then The Dyson navigation bar should have the correct tabs and href links
+
+  Scenario: I verify that the baseline image snapshot matches the current image snapshot
+    Then The baseline image snapshot should match the current image snapshot
+
+  Scenario: We will take a look at whats returned in our API response
+    Then The API response will contain expected data and UI will show location as GB

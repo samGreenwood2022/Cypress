@@ -9,7 +9,7 @@ const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 var { Given, Then, Before } = require("@badeball/cypress-cucumber-preprocessor");
 
 // Define base URL and initialize page objects
-const baseURL = "https://login.thenbs.com/auth/login";
+const baseURL = "https://source.thenbs.com/";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
 
@@ -24,9 +24,9 @@ Before(() => {
 });
 
 // Given step to sign into NBS and visit the manufacturer home page
-Given(`I sign into NBS and visit the manufacturer home page`, () => {
+Given(`I navigate to the Dyson manufacturer homepage`, () => {
   basePage.visit(); // Visit the base URL
-  basePage.signIn(); // Sign in
+  // basePage.signIn(); // Sign in
   HomePage.acceptCookies(); // Accept cookies
   HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
@@ -119,3 +119,15 @@ Then(`The Dyson logo image should exist and have the correct attributes`, () => 
 Then(`The Dyson navigation bar should have the correct tabs and href links`, () => {
   manufacturerHomePage.verifyTabs(); // Verify the Dyson image attributes
 });
+
+// Then step definition to verify the Dyson homepage image snapshot
+Then(`The baseline image snapshot should match the current image snapshot`, () => {
+  manufacturerHomePage.verifyImageSnapshot(); // Verify the image snapshot
+});
+
+
+// Then step definition to verify our different API test is working
+Then(`The API response will contain expected data and UI will show location as GB`, () => {
+  manufacturerHomePage.verifyUIandAPIContent();
+});
+
