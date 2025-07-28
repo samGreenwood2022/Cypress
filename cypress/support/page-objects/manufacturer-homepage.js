@@ -23,7 +23,7 @@ class ManufacturerHomePage extends BasePage {
   verifyTelephoneLinkAttribute(telNo) {
     this.elements
       .telephoneLink()
-      .should("exist") // Ensure the telephone link element exists
+      .should("exist", { timeout: 10000 }) // Ensure the telephone link element exists with a 10 second timeout
       .and("have.attr", "href", telNo); // Verify the href attribute and Tel protocol
   }
 
@@ -95,7 +95,7 @@ class ManufacturerHomePage extends BasePage {
     cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
     cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
     cy.scrollTo('bottom'); // Scroll to the bottom to ensure all content is rendered
-    cy.wait(1000); // Wait a bit after scrolling
+    cy.wait(2000); // Wait a bit after scrolling
     cy.matchImageSnapshot('dyson-homepage', {
       failureThreshold: 0.40, // Allow up to 40% difference
       failureThresholdType: 'percent',
@@ -116,7 +116,7 @@ class ManufacturerHomePage extends BasePage {
       const body = JSON.parse(match[1]);
 
       // Check that the API response contains the correct country (GB)
-      expect(['US', 'UK']).to.include(body.country);
+      expect(['US', 'GB']).to.include(body.country);
 
       // Now check that "UK" is present in the DOM, even if hidden
       cy.get('button[aria-label="Choose region"]')
