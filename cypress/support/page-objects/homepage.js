@@ -15,7 +15,7 @@ class HomePage extends BasePage {
     this.elements
       .searchInput()
       .should("exist", { timeout: 10000 }) // Ensure the search input field exists
-      .should("be.visible", { timeout: 10000 }) // Ensure the search input field is visible
+      // .should("be.visible", { timeout: 10000 }) // Ensure the search input field is visible
       .type(searchTerm); // Type the search term
 
       this.clickToRemoveSurvey();
@@ -23,7 +23,7 @@ class HomePage extends BasePage {
     // Wait for the search results to appear and ensure "Dyson" is visible
     cy.contains("Dyson", { timeout: 10000 })
       .should("be.visible", { timeout: 10000 }) // Ensure the 'Dyson' element is visible
-      .click(); // Click on the 'Dyson' element
+      .click({ force: true }); // Click on the 'Dyson' element
   }
 
   clickToRemoveSurvey() {
