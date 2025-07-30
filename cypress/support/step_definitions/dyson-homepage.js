@@ -131,3 +131,8 @@ Then(`The API response will contain expected data and UI will show location as G
   manufacturerHomePage.verifyUIandAPIContent();
 });
 
+// Then step definition to mock and verify api content in UI
+Then(`The API response will contain expected data and UI will show location as AU`, () => {
+
+});
+

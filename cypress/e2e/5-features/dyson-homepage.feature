@@ -51,3 +51,7 @@ Feature: Dyson Homepage Regression Tests
 
   Scenario: We will take a look at whats returned in our API response
     Then The API response will contain expected data and UI will show location as GB
+
+  Scenario: Ensure when we mock our API response the webpage will show the location as AU
+    Then The API response will contain expected data and UI will show location as AU
+

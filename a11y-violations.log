@@ -61632,3 +61632,2086 @@
     ]
   }
 ]
+[
+  {
+    "id": "label",
+    "impact": "critical",
+    "tags": [
+      "cat.forms",
+      "wcag2a",
+      "wcag412",
+      "section508",
+      "section508.22.n",
+      "TTv5",
+      "TT5.c",
+      "EN-301-549",
+      "EN-9.4.1.2",
+      "ACT"
+    ],
+    "description": "Ensure every form element has a label",
+    "help": "Form elements must have labels",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/label?application=axeAPI",
+    "nodes": [
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-0-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-0-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-0-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-0-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-1-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-1-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-1-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-1-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-2-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-2-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-2-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-2-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-3-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-3-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-3-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-3-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-4-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-4-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-4-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-4-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-5-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-5-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-5-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-5-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-6-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-6-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-6-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-6-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-7-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-7-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-7-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-7-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-8-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-8-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-8-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-8-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-9-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-9-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-9-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-9-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      },
+      {
+        "any": [
+          {
+            "id": "implicit-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element does not have an implicit (wrapped) <label>"
+          },
+          {
+            "id": "explicit-label",
+            "data": {
+              "explicitLabel": ""
+            },
+            "relatedNodes": [
+              {
+                "html": "<label class=\"mdc-label\" for=\"mat-mdc-checkbox-10-input\">",
+                "target": [
+                  "label[for=\"mat-mdc-checkbox-10-input\"]"
+                ]
+              }
+            ],
+            "impact": "critical",
+            "message": "Element does not have an explicit <label>"
+          },
+          {
+            "id": "aria-label",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-label attribute does not exist or is empty"
+          },
+          {
+            "id": "aria-labelledby",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+          },
+          {
+            "id": "non-empty-title",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no title attribute"
+          },
+          {
+            "id": "non-empty-placeholder",
+            "data": {
+              "messageKey": "noAttr"
+            },
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element has no placeholder attribute"
+          },
+          {
+            "id": "presentational-role",
+            "data": null,
+            "relatedNodes": [],
+            "impact": "critical",
+            "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "critical",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-10-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-10-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+      }
+    ]
+  },
+  {
+    "id": "landmark-no-duplicate-banner",
+    "impact": "moderate",
+    "tags": [
+      "cat.semantics",
+      "best-practice"
+    ],
+    "description": "Ensure the document has at most one banner landmark",
+    "help": "Document should not have more than one banner landmark",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-no-duplicate-banner?application=axeAPI",
+    "nodes": [
+      {
+        "any": [
+          {
+            "id": "page-no-duplicate-banner",
+            "data": null,
+            "relatedNodes": [
+              {
+                "html": "<header _ngcontent-ng-c1796021465=\"\" class=\"secondary-navbar\">",
+                "target": [
+                  ".secondary-navbar"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c2784088477=\"\" class=\"homepage-header\">",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c2784088477=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c2987557582=\"\" class=\"homepage-header\"><h2 _ngcontent-ng-c2987557582=\"\">Sponsored products</h2></header>",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c2987557582=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c1774629536=\"\" class=\"homepage-header\"><h2 _ngcontent-ng-c1774629536=\"\" class=\"bold\">Sponsored CPD Materials</h2><!----></header>",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c1774629536=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c769991922=\"\" class=\"homepage-header\">",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c769991922=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c2286391754=\"\" class=\"homepage-header\">",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c2286391754=\"\"] > .homepage-header"
+                ]
+              }
+            ],
+            "impact": "moderate",
+            "message": "Document has more than one banner landmark"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<header _ngcontent-ng-c264882020=\"\" class=\"top-navbar\">",
+        "target": [
+          ".top-navbar"
+        ],
+        "failureSummary": "Fix any of the following:\n  Document has more than one banner landmark"
+      }
+    ]
+  },
+  {
+    "id": "landmark-unique",
+    "impact": "moderate",
+    "tags": [
+      "cat.semantics",
+      "best-practice"
+    ],
+    "description": "Ensure landmarks are unique",
+    "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/landmark-unique?application=axeAPI",
+    "nodes": [
+      {
+        "any": [
+          {
+            "id": "landmark-is-unique",
+            "data": {
+              "role": "banner",
+              "accessibleText": null
+            },
+            "relatedNodes": [
+              {
+                "html": "<header _ngcontent-ng-c1796021465=\"\" class=\"secondary-navbar\">",
+                "target": [
+                  ".secondary-navbar"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c2784088477=\"\" class=\"homepage-header\">",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c2784088477=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c2987557582=\"\" class=\"homepage-header\"><h2 _ngcontent-ng-c2987557582=\"\">Sponsored products</h2></header>",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c2987557582=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c1774629536=\"\" class=\"homepage-header\"><h2 _ngcontent-ng-c1774629536=\"\" class=\"bold\">Sponsored CPD Materials</h2><!----></header>",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c1774629536=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c769991922=\"\" class=\"homepage-header\">",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c769991922=\"\"] > .homepage-header"
+                ]
+              },
+              {
+                "html": "<header _ngcontent-ng-c2286391754=\"\" class=\"homepage-header\">",
+                "target": [
+                  "app-view-container[_ngcontent-ng-c2286391754=\"\"] > .homepage-header"
+                ]
+              }
+            ],
+            "impact": "moderate",
+            "message": "The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<header _ngcontent-ng-c264882020=\"\" class=\"top-navbar\">",
+        "target": [
+          ".top-navbar"
+        ],
+        "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+      }
+    ]
+  },
+  {
+    "id": "region",
+    "impact": "moderate",
+    "tags": [
+      "cat.keyboard",
+      "best-practice"
+    ],
+    "description": "Ensure all page content is contained by landmarks",
+    "help": "All page content should be contained by landmarks",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/region?application=axeAPI",
+    "nodes": [
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<h1 _ngcontent-ng-c2767985512=\"\"><app-name _ngcontent-ng-c2767985512=\"\" _nghost-ng-c829372098=\"\">NBS Source</app-name><span _ngcontent-ng-c2767985512=\"\" class=\"second-line\">Find, select and specify<span _ngcontent-ng-c2767985512=\"\"></span></span></h1>",
+        "target": [
+          "h1"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<p _ngcontent-ng-c2767985512=\"\"> A new way to find, select and specify construction products for your next project. </p>",
+        "target": [
+          "p[_ngcontent-ng-c2767985512=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<span class=\"mdc-button__label\"> Browse categories </span>",
+        "target": [
+          "a[title=\"Browse categories\"][href$=\"categories\"][color=\"accent\"] > .mdc-button__label"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<span class=\"mdc-button__label\"> Browse manufacturers </span>",
+        "target": [
+          "a[title=\"Browse manufacturers\"] > .mdc-button__label"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<img _ngcontent-ng-c2767985512=\"\" alt=\"A construction site\" src=\"assets/images/homepage/sponsored/sponsored-background.webp\">",
+        "target": [
+          "img[alt=\"A construction site\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<app-view-container _ngcontent-ng-c3510821304=\"\" _nghost-ng-c4217891003=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-view-container[_ngcontent-ng-c3510821304=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<h2 _ngcontent-ng-c1300943780=\"\" class=\"medium\"> The new home of the NBS National BIM Library </h2>",
+        "target": [
+          ".text-container[_ngcontent-ng-c1300943780=\"\"] > .medium"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<p _ngcontent-ng-c1300943780=\"\">",
+        "target": [
+          "p[_ngcontent-ng-c1300943780=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<a _ngcontent-ng-c1300943780=\"\" mat-flat-button=\"\" color=\"primary\" data-cy=\"homepageViewBimLibraryButton\" mat-ripple-loader-uninitialized=\"\" mat-ripple-loader-class-name=\"mat-mdc-button-ripple\" class=\"mdc-button mdc-button--unelevated mat-mdc-unelevated-button mat-primary mat-mdc-button-base\" href=\"/bimlibrary\">",
+        "target": [
+          "a[data-cy=\"homepageViewBimLibraryButton\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<span class=\"mdc-button__label\"> BIM Authoring and Hosting </span>",
+        "target": [
+          ".links[_ngcontent-ng-c1300943780=\"\"] > .white.mdc-button--outlined.mat-mdc-outlined-button > .mdc-button__label"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<div _ngcontent-ng-c2577883=\"\" class=\"text\"><strong _ngcontent-ng-c2577883=\"\">BIM objects</strong><p _ngcontent-ng-c2577883=\"\" class=\"ng-star-inserted\">Over 28,000</p><!----></div>",
+        "target": [
+          ".image-container[_ngcontent-ng-c1300943780=\"\"] > app-listing-count > .text[_ngcontent-ng-c2577883=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<img _ngcontent-ng-c1300943780=\"\" src=\"assets/images/homepage/bim-library.webp\" alt=\"The new home of the NBS National BIM Library on a laptop screen\">",
+        "target": [
+          "img[_ngcontent-ng-c1300943780=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(1) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-0-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-0-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(1) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(2) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-1-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-1-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(2) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(3) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-2-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-2-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(3) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(4) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-3-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-3-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(4) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(5) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-4-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-4-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(5) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(6) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-5-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-5-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(6) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(7) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-6-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-6-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(7) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(8) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-7-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-7-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(8) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(9) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-8-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-8-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(9) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(10) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-9-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-9-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(10) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<cirrus-sponsored-badge _ngcontent-ng-c2865051801=\"\" _nghost-ng-c3613410418=\"\" class=\"ng-star-inserted\">",
+        "target": [
+          "app-inspiration-tile:nth-child(11) > cirrus-sponsored-badge"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<input type=\"checkbox\" class=\"mdc-checkbox__native-control\" id=\"mat-mdc-checkbox-10-input\" tabindex=\"0\">",
+        "target": [
+          "#mat-mdc-checkbox-10-input"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c2865051801=\"\">",
+        "target": [
+          "app-inspiration-tile:nth-child(11) > article"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<app-are-you-manufacturer _ngcontent-ng-c3510821304=\"\" _nghost-ng-c2077949763=\"\" ngskiphydration=\"\">",
+        "target": [
+          "app-are-you-manufacturer"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<div _ngcontent-ng-c2286391754=\"\">",
+        "target": [
+          "div[_ngcontent-ng-c2286391754=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<section _ngcontent-ng-c1269445017=\"\" class=\"testimonials\">",
+        "target": [
+          ".testimonials"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c3554857976=\"\" class=\"text\"><h2 _ngcontent-ng-c3554857976=\"\" class=\"medium\">Find, select, specify</h2><p _ngcontent-ng-c3554857976=\"\">Discover the impact NBS Source can make to your business</p></article>",
+        "target": [
+          ".text[_ngcontent-ng-c3554857976=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<article _ngcontent-ng-c3554857976=\"\" class=\"link ng-star-inserted\">",
+        "target": [
+          ".link[_ngcontent-ng-c3554857976=\"\"]"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<p _ngcontent-ng-c2486752943=\"\" class=\"footer-tagline flex-center-all\"> © 2025 Hubexo North UK Ltd. All rights reserved. </p>",
+        "target": [
+          ".footer-tagline"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      },
+      {
+        "any": [
+          {
+            "id": "region",
+            "data": {
+              "isIframe": false
+            },
+            "relatedNodes": [],
+            "impact": "moderate",
+            "message": "Some page content is not contained by landmarks"
+          }
+        ],
+        "all": [],
+        "none": [],
+        "impact": "moderate",
+        "html": "<nbs-spinner _ngcontent-ng-c1257388523=\"\" _nghost-ng-c3252123878=\"\">",
+        "target": [
+          "nbs-spinner"
+        ],
+        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+      }
+    ]
+  }
+]
