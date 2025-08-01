@@ -6,7 +6,11 @@ const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
 // Import Cucumber preprocessor functions
-var { Given, Then, Before } = require("@badeball/cypress-cucumber-preprocessor");
+var {
+  Given,
+  Then,
+  Before,
+} = require("@badeball/cypress-cucumber-preprocessor");
 
 // Define base URL and initialize page objects
 const baseURL = "https://source.thenbs.com/";
@@ -50,9 +54,12 @@ Then(`The h1 title text will be as expected {string}`, (h1Text) => {
 });
 
 // Then step to verify the href attribute of the Source logo
-Then(`The href attribute of the Source logo will be as expected {string}`, (href) => {
-  basePage.verifyLinkHref(href); // Verify the href attribute of the Source logo
-});
+Then(
+  `The href attribute of the Source logo will be as expected {string}`,
+  (href) => {
+    basePage.verifyLinkHref(href); // Verify the href attribute of the Source logo
+  }
+);
 
 // Then step to verify the manufacturer website link
 Then(`The manufacturer website link is correct {string}`, (url) => {
@@ -68,24 +75,32 @@ Then(`The button will display the correct text {string}`, (btnTxt) => {
 // The results of the accessibility checks will be output to the browser's console
 // You can also click the A11y failures in the Cypress runner (there will be 8, but the test is set to not fail),
 // which will then highlight the element and output a summary of the failure in the console
-Then(`The results of the accessibility checks will be output to the console`, () => {
-  cy.injectAxe(); // Inject the AXE script into the page
-  cy.checkA11y(null, null, (violations) => {
-    // Log the violations without failing the test
-    cy.task('log', violations);
-    violations.forEach((violation) => {
-      const nodes = Cypress.$(
-        violation.nodes.map((node) => node.target).join(',')
-      );
-      Cypress.log({
-        name: 'a11y error!',
-        consoleProps: () => violation,
-        $el: nodes,
-        message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`,
-      });
-    });
-  }, { timeout: 10000 }); // Increase the timeout to 10 seconds
-});
+Then(
+  `The results of the accessibility checks will be output to the console`,
+  () => {
+    cy.injectAxe(); // Inject the AXE script into the page
+    cy.checkA11y(
+      null,
+      null,
+      (violations) => {
+        // Log the violations without failing the test
+        cy.task("log", violations);
+        violations.forEach((violation) => {
+          const nodes = Cypress.$(
+            violation.nodes.map((node) => node.target).join(",")
+          );
+          Cypress.log({
+            name: "a11y error!",
+            consoleProps: () => violation,
+            $el: nodes,
+            message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`,
+          });
+        });
+      },
+      { timeout: 10000 }
+    ); // Increase the timeout to 10 seconds
+  }
+);
 
 // Then step definition for the API test
 Then(`I should get a 200 response and output request to the console`, () => {
@@ -96,43 +111,59 @@ Then(`I should get a 200 response and output request to the console`, () => {
       // Assert the status code
       expect(response.status).to.equal(200);
       // Store the response body in an alias
-      cy.wrap(response.body).as('apiResponse');
+      cy.wrap(response.body).as("apiResponse");
     });
 });
 
 // Then step definition to check the response contains the expected email address
-Then(`The response should contain the expected email address {string}`, (expectedEmail) => {
-  // Retrieve the response body from the alias
-  cy.get('@apiResponse').then((body) => {
-    // Assert that the response body contains the expected email address
-    const emails = body.map((comment) => comment.email);
-    expect(emails).to.include(expectedEmail);
-  });
-});
+Then(
+  `The response should contain the expected email address {string}`,
+  (expectedEmail) => {
+    // Retrieve the response body from the alias
+    cy.get("@apiResponse").then((body) => {
+      // Assert that the response body contains the expected email address
+      const emails = body.map((comment) => comment.email);
+      expect(emails).to.include(expectedEmail);
+    });
+  }
+);
 
 // Then step definition to verify the Dyson image attributes
-Then(`The Dyson logo image should exist and have the correct attributes`, () => {
-  manufacturerHomePage.verifyDysonImageAttributes(); // Verify the Dyson image attributes
-});
+Then(
+  `The Dyson logo image should exist and have the correct attributes`,
+  () => {
+    manufacturerHomePage.verifyDysonImageAttributes(); // Verify the Dyson image attributes
+  }
+);
 
 // Then step definition to verify the Dyson navigation bar tabs
-Then(`The Dyson navigation bar should have the correct tabs and href links`, () => {
-  manufacturerHomePage.verifyTabs(); // Verify the Dyson image attributes
-});
+Then(
+  `The Dyson navigation bar should have the correct tabs and href links`,
+  () => {
+    manufacturerHomePage.verifyTabs(); // Verify the Dyson image attributes
+  }
+);
 
 // Then step definition to verify the Dyson homepage image snapshot
-Then(`The baseline image snapshot should match the current image snapshot`, () => {
-  manufacturerHomePage.verifyImageSnapshot(); // Verify the image snapshot
-});
-
+Then(
+  `The baseline image snapshot should match the current image snapshot`,
+  () => {
+    manufacturerHomePage.verifyImageSnapshot(); // Verify the image snapshot
+  }
+);
 
 // Then step definition to verify our different API test is working
-Then(`The API response will contain expected data and UI will show location as GB`, () => {
-  manufacturerHomePage.verifyUIandAPIContent();
-});
+Then(
+  `The API response will contain expected data and UI will show location as GB`,
+  () => {
+    manufacturerHomePage.verifyUIandAPIContent();
+  }
+);
 
-// Then step definition to mock and verify api content in UI
-Then(`The API response will contain expected data and UI will show location as AU`, () => {
-
-});
-
+// // Then step definition to mock and verify api content in UI
+// Then(
+//   `The API response will contain expected data and UI will show location as AU`,
+//   () => {
+//     manufacturerHomePage.mockAndVerifyAPIContent(); // Mock and verify API content
+//   }
+// );

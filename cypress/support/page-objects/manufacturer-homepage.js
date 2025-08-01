@@ -150,30 +150,6 @@ class ManufacturerHomePage extends BasePage {
     });
   }
 
-  mockAndVerifyAPIContent() {
-    cy.intercept(
-      "GET",
-      "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
-      {
-        statusCode: 200,
-        body: {
-          country: "AU",
-          state: "AUS",
-          stateName: "Australia",
-          continent: "AU",
-        },
-      }
-    ).as("mockGeoLocation");
-
-    cy.visit("/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview");
-    cy.wait("@mockGeoLocation");
-
-    // Now you can assert that your UI responds to the mocked data
-    cy.get('button[aria-label="Choose region"]')
-      .should("exist")
-      .invoke("text")
-      .should("contain", "AU");
-  }
 }
 
 module.exports = ManufacturerHomePage;
