@@ -7,8 +7,9 @@ class ManufacturerHomePage extends BasePage {
     favouritesIcon: () => cy.get("app-add-to-collection-button").first(), // Selector for the first favourites icon
     permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'), // Selector for the permalink icon
     manufacturerWebLink: () => cy.get('a[action="company-website"]'), // Selector for the manufacturer website link
-    contactManufacturerButton: () => cy.contains('button', 'Contact manufacturer'), // Selector for the contact manufacturer button
-    h1Title: () => cy.get('h1'), // Selector for the h1 title
+    contactManufacturerButton: () =>
+      cy.contains("button", "Contact manufacturer"), // Selector for the contact manufacturer button
+    h1Title: () => cy.get("h1"), // Selector for the h1 title
     dysonImage: () => cy.get('img[alt="Dyson"]'), // Selector for the Dyson image
     overviewTab: () => cy.get('[data-cy="overviewTab"]'), // Selector for the Overview tab
     productsTab: () => cy.get('[data-cy="productsTab"]'), // Selector for the Products tab
@@ -16,7 +17,7 @@ class ManufacturerHomePage extends BasePage {
     certificatesTab: () => cy.get('[data-cy="certificatesTab"]'), // Selector for the Third party certifications tab
     literatureTab: () => cy.get('[data-cy="literatureTab"]'), // Selector for the Literature tab
     caseStudiesTab: () => cy.get('[data-cy="caseStudiesTab"]'), // Selector for the Case studies tab
-    aboutTab: () => cy.get('[data-cy="aboutTab"]') // Selector for the About us tab
+    aboutTab: () => cy.get('[data-cy="aboutTab"]'), // Selector for the About us tab
   };
 
   // Method to verify the telephone link attribute
@@ -68,23 +69,46 @@ class ManufacturerHomePage extends BasePage {
       .should("exist") // Ensure the Dyson image element exists
       .and("have.attr", "loading", "lazy") // Verify the loading attribute is lazy
       .and("have.attr", "alt", "Dyson") // Verify the alt attribute is Dyson
-      .and("have.attr", "src", "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976"); // Verify the src attribute
+      .and(
+        "have.attr",
+        "src",
+        "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976"
+      ); // Verify the src attribute
   }
 
   // Method to verify the tabs are visible and have the correct href attributes
   verifyTabs() {
     const tabs = [
-      { element: this.elements.overviewTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview" },
-      { element: this.elements.productsTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products" },
+      {
+        element: this.elements.overviewTab,
+        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
+      },
+      {
+        element: this.elements.productsTab,
+        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
+      },
       //{ element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
-      { element: this.elements.certificatesTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications" },
-      { element: this.elements.literatureTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature" },
-      { element: this.elements.caseStudiesTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies" },
-      { element: this.elements.aboutTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about" }
+      {
+        element: this.elements.certificatesTab,
+        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
+      },
+      {
+        element: this.elements.literatureTab,
+        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
+      },
+      {
+        element: this.elements.caseStudiesTab,
+        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
+      },
+      {
+        element: this.elements.aboutTab,
+        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
+      },
     ];
 
-    tabs.forEach(tab => {
-      tab.element()
+    tabs.forEach((tab) => {
+      tab
+        .element()
         .should("exist", { timeout: 10000 }) // 10 second timeout for existence
         .and("be.visible")
         .and("have.attr", "href", tab.href);
@@ -94,37 +118,38 @@ class ManufacturerHomePage extends BasePage {
   verifyImageSnapshot() {
     cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
     cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
-    cy.scrollTo('bottom'); // Scroll to the bottom to ensure all content is rendered
+    cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
     cy.wait(2000); // Wait a bit after scrolling
-    cy.matchImageSnapshot('dyson-homepage', {
-      failureThreshold: 0.40, // Allow up to 40% difference
-      failureThresholdType: 'percent',
+    cy.matchImageSnapshot("dyson-homepage", {
+      failureThreshold: 0.4, // Allow up to 40% difference
+      failureThresholdType: "percent",
     });
   }
 
   verifyUIandAPIContent() {
     cy.request({
-      method: 'GET',
-      url: 'https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location',
-      failOnStatusCode: false
+      method: "GET",
+      url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
+      failOnStatusCode: false,
     }).then((response) => {
       // The response is like: jsonFeed({...});
       const match = response.body.match(/jsonFeed\((.*)\);?/);
       if (!match) {
-        throw new Error('Unexpected response format');
+        throw new Error("Unexpected response format");
       }
       const body = JSON.parse(match[1]);
 
       // Check that the API response contains the correct country (GB)
-      expect(['US', 'GB']).to.include(body.country);
+      expect(["US", "GB"]).to.include(body.country);
 
       // Now check that "UK" is present in the DOM, even if hidden
       cy.get('button[aria-label="Choose region"]')
-        .should('exist')
-        .invoke('text')
-        .should('contain', 'UK');
+        .should("exist")
+        .invoke("text")
+        .should("contain", "UK");
     });
   }
+
 }
 
 module.exports = ManufacturerHomePage;
