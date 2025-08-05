@@ -28,5 +28,7 @@ jobs:
     - name: Install dependencies
       run: npm install --legacy-peer-deps  # Adjust for your package manager if not using npm
 
-    - name: Run only Dyson homepage feature
-      run: npx cypress run --spec "cypress/e2e/5-features/dyson-homepage.feature"  # Run only the Dyson homepage feature file test
+    - name: Run only Dyson homepage feature and record to Cypress Cloud
+      run: npx cypress run --record --spec "cypress/e2e/5-features/dyson-homepage.feature"
+      env:
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

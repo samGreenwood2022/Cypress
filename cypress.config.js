@@ -2,11 +2,12 @@ const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const { addCucumberPreprocessorPlugin } = require("@badeball/cypress-cucumber-preprocessor");
 const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor/esbuild");
-const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin'); // <-- Add this line
+const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
 const fs = require('fs');
 const path = require('path');
 
 module.exports = defineConfig({
+  projectId: "4afu4o", // Add this line for Cypress Cloud integration
   e2e: {
     viewportWidth: 990,
     viewportHeight: 800,
