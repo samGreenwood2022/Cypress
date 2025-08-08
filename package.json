@@ -4,7 +4,8 @@
   "type": "commonjs",
   "scripts": {
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "cypress:record": "cypress run --record --key 1be92798-f1e9-4822-b4a5-5c57c7abd574 --spec \"cypress/e2e/5-features/dyson-homepage.feature\""
   },
   "author": "S Greenwood",
   "license": "ISC",
