@@ -73,7 +73,7 @@ Given(`I navigate to the Dyson manufacturer homepage`, () => {
   cy.intercept("GET", "**/service-worker.js", { statusCode: 404 }).as("sw");
 
   basePage.visit(); // Visit the base URL
-  cy.wait("@mockGeoLocation", { timeout: 10000 }); // Ensure the mocked request completes before interacting
+  cy.wait("@mockGeoLocation", { timeout: 1000 }); // Ensure the mocked request completes before interacting
   // basePage.signIn(); // Sign in
   HomePage.acceptCookies(); // Accept cookies
   HomePage.enterSearchTerm("Dyson"); // Enter search term
