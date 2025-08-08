@@ -2,6 +2,7 @@
 
 // Import page objects
 const HomePage = require("../page-objects/homepage");
+// Import BasePage via CommonJS export (no .default)
 const BasePage = require("../page-objects/base-page");
 const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
 
@@ -17,19 +18,62 @@ const baseURL = "https://source.thenbs.com/";
 const basePage = new BasePage(baseURL);
 const manufacturerHomePage = new ManufacturerHomePage();
 
-// Define email and password variables
-const email = "sam_greenwood26@hotmail.com";
-const password = "Felix1976";
+// // Define email and password variables
+// const email = "sam_greenwood26@hotmail.com";
+// const password = "Felix1976";
 
-// Before hook to set email and password before each scenario
-Before(() => {
-  basePage.setEmail(email); // Set the email
-  basePage.setPassword(password); // Set the password
-});
+// (Removed Cucumber Before with cy.* to avoid executing outside a running test)
 
 // Given step to sign into NBS and visit the manufacturer home page
 Given(`I navigate to the Dyson manufacturer homepage`, () => {
+  // Clear caches per run
+  cy.clearCookies();
+  cy.clearLocalStorage();
+  cy.window({ log: false }).then((win) => {
+    try {
+      win.sessionStorage.clear();
+    } catch {}
+  });
+
+  // Register intercept BEFORE navigation
+  cy.intercept(
+    { method: "GET", url: "**/cookieconsentpub/v1/geo/location*" },
+    (req) => {
+      const isJsonp = /[?&](callback|jsonp)=/.test(req.url);
+      let cb = null;
+      try {
+        const u = new URL(req.url);
+        cb = u.searchParams.get("callback") || u.searchParams.get("jsonp");
+      } catch {}
+
+      if (isJsonp) {
+        const callbackName = cb && /^[\w$.]+$/.test(cb) ? cb : "jsonFeed";
+        req.reply({
+          statusCode: 200,
+          headers: {
+            "content-type": "application/javascript; charset=utf-8",
+            "cache-control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+          },
+          body: `${callbackName}({"country":"CA","state":"ON","stateName":"Ontario","continent":"NA"});`,
+        });
+      } else {
+        req.reply({
+          statusCode: 200,
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+            "cache-control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+          },
+          body: { country: "CA", state: "ON", stateName: "Ontario", continent: "NA" },
+        });
+      }
+    }
+  ).as("mockGeoLocation");
+
+  // Optional: block service worker to avoid stale cached geo
+  cy.intercept("GET", "**/service-worker.js", { statusCode: 404 }).as("sw");
+
   basePage.visit(); // Visit the base URL
+  cy.wait("@mockGeoLocation", { timeout: 10000 }); // Ensure the mocked request completes before interacting
   // basePage.signIn(); // Sign in
   HomePage.acceptCookies(); // Accept cookies
   HomePage.enterSearchTerm("Dyson"); // Enter search term
@@ -160,10 +204,10 @@ Then(
   }
 );
 
-// // Then step definition to mock and verify api content in UI
-// Then(
-//   `The API response will contain expected data and UI will show location as AU`,
-//   () => {
-//     manufacturerHomePage.mockAndVerifyAPIContent(); // Mock and verify API content
-//   }
-// );
+// Then step definition to mock and verify api content in UI
+Then(
+  `The API response will contain expected data and UI will show location as AU`,
+  () => {
+    manufacturerHomePage.mockAndVerifyAPIContent(); // Mock and verify API content
+  }
+);
