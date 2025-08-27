@@ -1,0 +1,26 @@
+# Node dependency directories
+node_modules
+
+# Cypress artifacts you might not want baked into the image
+cypress/screenshots
+cypress/videos
+cypress/downloads
+
+# Snapshots / diffs (visual regression outputs)
+snapshots
+
+# Logs / reports
+*.log
+reports
+
+# VCS
+.git
+.gitignore
+
+# OS / editor noise
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Docker files themselves (optional)
+Dockerfile*
