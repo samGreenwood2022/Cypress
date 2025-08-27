@@ -18,7 +18,7 @@ class HomePage extends BasePage {
       // .should("be.visible", { timeout: 10000 }) // Ensure the search input field is visible
       .type(searchTerm); // Type the search term
 
-      this.clickToRemoveSurvey();
+      // this.clickToRemoveSurvey();
 
     // Wait for the search results to appear and ensure "Dyson" is visible
     cy.contains("Dyson", { timeout: 10000 })
