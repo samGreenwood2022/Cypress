@@ -26,7 +26,7 @@ RUN npm install --legacy-peer-deps --no-audit --no-fund \
 COPY cypress.config.js ./
 COPY cypress ./cypress
 COPY README.md ./
-COPY a11y-violations.log* ./ 2>/dev/null || true
+COPY a11y-violations.log* ./ 2>/dev/null || true /
 
 # Environment variables (override at run time with -e)
 ENV CI=1 \
