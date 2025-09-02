@@ -127,6 +127,7 @@ class ManufacturerHomePage extends BasePage {
   }
 
   verifyUIandAPIContent() {
+    cy.viewport(1000, 4410)
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
