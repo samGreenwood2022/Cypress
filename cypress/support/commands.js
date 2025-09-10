@@ -40,14 +40,22 @@ Cypress.Commands.add('setSurveyDismissFlags', (pollId = '1657266') => {
 
 // An example of a custom command to log in a user using cy.origin for cross-origin handling
 Cypress.Commands.add('loginUser', () => {
-    // This runs on https://source.thenbs.com
-    cy.contains('button', 'Sign in', {timeout: 10000}).click();
-    
-    // These commands run on https://login.thenbs.com
+    // store the current URL to compare after login
+    cy.url().as('currentUrl');
+
+    // Initiate sign in from the source domain
+    cy.contains('button', 'Sign in', { timeout: 10000 }).click();
+
+    // Perform cross-origin login steps
     cy.origin('https://login.thenbs.com', () => {
         cy.get('#Identification_Email').type('sam_greenwood26@hotmail.com');
-        cy.contains('Next', {timeout: 10000}).click();
+        cy.contains('Next', { timeout: 10000 }).click();
         cy.get('#Authentication_Password').type('Felix1976');
-        cy.contains('button', 'Sign in', {timeout: 10000}).click();
+        cy.contains('button', 'Sign in', { timeout: 10000 }).click();
+    });
+
+    // Simple post-login assertion (adjust as needed for your app)
+    cy.get('@currentUrl').then((currentUrl) => {
+        cy.url().should('include', currentUrl);
     });
 });
