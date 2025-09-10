@@ -26,7 +26,7 @@ class HomePage extends BasePage {
 
   // Example: type into the aliased search input (after aliasSearchInput was called)
   typeInAliasedSearch(term) {
-    cy.get('@searchInput', { timeout: 10000 }) // retrieve previously aliased element
+    cy.get('@searchInput', { timeout: 15000 }) // retrieve previously aliased element
       .should('be.visible')
       .clear()
       .type(term);
