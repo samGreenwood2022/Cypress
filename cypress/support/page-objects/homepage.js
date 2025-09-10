@@ -5,7 +5,7 @@ const BasePage = require("./base-page"); // Use require to import the BasePage c
 class HomePage extends BasePage {
   // Define selectors for elements on the homepage
   elements = {
-    searchInput: () => cy.get('[data-cy="searchFieldSearch"]', { timeout: 10000 }).first(), // Selector for the search input field
+    searchInput: () => cy.get('[data-cy="searchFieldSearch"]').first(), // Selector for the search input field
     acceptCookiesButton: () =>
       cy.contains("button", "Accept All Cookies", { timeout: 10000 }), // Selector for the accept cookies button
   };
@@ -26,7 +26,7 @@ class HomePage extends BasePage {
 
   // Example: type into the aliased search input (after aliasSearchInput was called)
   typeInAliasedSearch(term) {
-    cy.get('@searchInput') // retrieve previously aliased element
+    cy.get('@searchInput', { timeout: 10000 }) // retrieve previously aliased element
       .should('be.visible')
       .clear()
       .type(term);
