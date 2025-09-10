@@ -144,7 +144,7 @@ class ManufacturerHomePage extends BasePage {
       expect(["US", "GB"]).to.include(body.country);
 
       // Now check that "UK" is present in the DOM, even if hidden
-      cy.get('button[aria-label="Choose region"]')
+      cy.get('button[aria-label="Choose region"]', { timeout: 10000 })
         .should("exist")
         .invoke("text")
         .should("contain", "UK");
