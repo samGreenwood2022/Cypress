@@ -24,3 +24,30 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import "cypress-axe";
+
+Cypress.Commands.add('setSurveyDismissFlags', (pollId = '1657266') => {
+    const done = `${pollId}%2C${pollId}`;
+    cy.window({ log: false }).then((win) => {
+        try {
+            win.localStorage.setItem('_hjMinimizedPolls', pollId);
+            win.localStorage.setItem('_hjDonePolls', done);
+        } catch (e) {
+            // Surface a clear error if localStorage is not accessible
+            throw new Error(`Failed to set survey flags in localStorage: ${e?.message || e}`);
+        }
+    });
+});
+
+// An example of a custom command to log in a user using cy.origin for cross-origin handling
+Cypress.Commands.add('loginUser', () => {
+    // This runs on https://source.thenbs.com
+    cy.contains('button', 'Sign in', {timeout: 10000}).click();
+    
+    // These commands run on https://login.thenbs.com
+    cy.origin('https://login.thenbs.com', () => {
+        cy.get('#Identification_Email').type('sam_greenwood26@hotmail.com');
+        cy.contains('Next', {timeout: 10000}).click();
+        cy.get('#Authentication_Password').type('Felix1976');
+        cy.contains('button', 'Sign in', {timeout: 10000}).click();
+    });
+});

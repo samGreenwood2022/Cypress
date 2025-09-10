@@ -151,6 +151,10 @@ class ManufacturerHomePage extends BasePage {
     });
   }
 
+  loginUser() {
+    cy.loginUser(); // Use the custom command to log in
+  }
+
 }
 
 module.exports = ManufacturerHomePage;

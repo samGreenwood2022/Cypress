@@ -206,8 +206,8 @@ Then(
 
 // Then step definition to mock and verify api content in UI
 Then(
-  `The API response will contain expected data and UI will show location as AU`,
+  `The user will be able to sign in with valid credentials`,
   () => {
-    manufacturerHomePage.mockAndVerifyAPIContent(); // Mock and verify API content
+    manufacturerHomePage.loginUser();
   }
 );
