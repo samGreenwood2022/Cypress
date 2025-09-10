@@ -10,8 +10,8 @@ module.exports = defineConfig({
   projectId: "4afu4o", // Add this line for Cypress Cloud integration
   e2e: {
     experimentalStudio: true,  // Add this line
-    viewportWidth: 990,
-    viewportHeight: 800,
+    // viewportWidth: 990,
+    // viewportHeight: 800,
     specPattern: [
       'cypress/e2e/5-features/*.feature', // Define path to feature files
       'cypress/e2e/1-getting-started/*.js', // Define path to feature files
