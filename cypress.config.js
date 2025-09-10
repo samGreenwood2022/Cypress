@@ -9,6 +9,7 @@ const path = require('path');
 module.exports = defineConfig({
   projectId: "4afu4o", // Add this line for Cypress Cloud integration
   e2e: {
+    experimentalStudio: true,  // Add this line
     viewportWidth: 990,
     viewportHeight: 800,
     specPattern: [
