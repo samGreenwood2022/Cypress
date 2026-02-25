@@ -72,7 +72,7 @@ class ManufacturerHomePage extends BasePage {
       .and(
         "have.attr",
         "src",
-        "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976"
+        "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976",
       ); // Verify the src attribute
   }
 
@@ -121,13 +121,13 @@ class ManufacturerHomePage extends BasePage {
     cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
     cy.wait(3000); // Wait a bit after scrolling
     cy.matchImageSnapshot("dyson-homepage", {
-      failureThreshold: 0.20, // Allow up to 10% difference
+      failureThreshold: 0.2, // Allow up to 10% difference
       failureThresholdType: "percent",
     });
   }
 
   verifyUIandAPIContent() {
-    cy.viewport(1100, 1200)
+    cy.viewport(1100, 1200);
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
@@ -155,6 +155,14 @@ class ManufacturerHomePage extends BasePage {
     cy.loginUser(); // Use the custom command to log in
   }
 
+  verifyStarWarsAPIResponse() {
+    // Get a specific character and verify their details
+    cy.request("GET", "https://swapi.dev/api/people/1/").then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.name).to.eq("Luke Skywalker");
+      expect(response.body).to.have.property("homeworld");
+    });
+  }
 }
 
 module.exports = ManufacturerHomePage;

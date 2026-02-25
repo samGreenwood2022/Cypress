@@ -75,7 +75,7 @@ Given(`I navigate to the Dyson manufacturer homepage`, () => {
   basePage.visit(); // Visit the base URL
   // cy.wait("@mockGeoLocation", { timeout: 1000 }); // Ensure the mocked request completes before interacting
   // basePage.signIn(); // Sign in
-  HomePage.acceptCookies(); // Accept cookies
+  // HomePage.acceptCookies(); // Accept cookies
   HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
@@ -209,5 +209,13 @@ Then(
   `The user will be able to sign in with valid credentials`,
   () => {
     manufacturerHomePage.loginUser();
+  }
+);
+
+// Then the api response will be as expected
+Then(
+  `The api request to the star wars db will return expected data`,
+  () => {
+    manufacturerHomePage.verifyStarWarsAPIResponse();
   }
 );

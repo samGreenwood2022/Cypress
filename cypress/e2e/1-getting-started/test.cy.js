@@ -47,3 +47,5 @@ describe('mock-api', () => {
     });
   });
 });
+
+it('first-test', function() {});
