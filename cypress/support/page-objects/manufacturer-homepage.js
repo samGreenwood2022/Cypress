@@ -126,24 +126,35 @@ class ManufacturerHomePage extends BasePage {
     });
   }
 
+  // Method to verify that the geolocation API response matches the UI region selector.
+  // This confirms the API returns a valid country code and the UI reflects the correct region.
   verifyUIandAPIContent() {
+    // Set a fixed viewport to ensure the region selector is visible
     cy.viewport(1100, 1200);
+
+    // Make a GET request to the OneTrust geolocation API
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
-      failOnStatusCode: false,
+      failOnStatusCode: false, // Allow non-2xx responses so we can handle them manually
     }).then((response) => {
-      // The response is like: jsonFeed({...});
+      // The API wraps its JSON payload in a JSONP callback: jsonFeed({...});
+      // Use a regex to extract the JSON object from inside the callback wrapper
       const match = response.body.match(/jsonFeed\((.*)\);?/);
+
+      // If the response doesn't match the expected JSONP format, fail with a clear error
       if (!match) {
         throw new Error("Unexpected response format");
       }
+
+      // Parse the extracted JSON string into a JavaScript object
       const body = JSON.parse(match[1]);
 
-      // Check that the API response contains the correct country (GB)
-      expect(["US", "GB"]).to.include(body.country);
+      // Assert the API returned a recognised country code 
+      expect(["GB"]).to.include(body.country);
 
-      // Now check that "UK" is present in the DOM, even if hidden
+      // Verify the UI region selector button exists and displays "UK",
+      // confirming the frontend reflects the geolocation API result
       cy.get('button[aria-label="Choose region"]', { timeout: 10000 })
         .should("exist")
         .invoke("text")
@@ -159,6 +170,7 @@ class ManufacturerHomePage extends BasePage {
     // Get a specific character and verify their details
     cy.request("GET", "https://swapi.dev/api/people/1/").then((response) => {
       expect(response.status).to.eq(200);
+      debugger;
       expect(response.body.name).to.eq("Luke Skywalker");
       expect(response.body).to.have.property("homeworld");
     });
