@@ -8,6 +8,9 @@ const path = require('path');
 
 module.exports = defineConfig({
   projectId: "4afu4o", // Add this line for Cypress Cloud integration
+  env: {
+    CAT_API_KEY: 'live_ZNfnguGTdc4qwwfu7XQUHXykqrzzCyGQKNpovC44dbRfOvGOl2W2fPx2t1P30S7F', // Replace with your actual Cat API key
+  },
   e2e: {
     experimentalStudio: true,  // This will enabled the Cypress Studio feature
     experimentalPromptCommand: true, // Enable cy.prompt() feature
@@ -49,15 +52,6 @@ module.exports = defineConfig({
 
       // Register the cypress-image-snapshot plugin
       addMatchImageSnapshotPlugin(on, config);
-
-      // Register the custom log task
-      on('task', {
-        log(message) {
-          const logFile = path.join(__dirname, 'a11y-violations.log');
-          fs.appendFileSync(logFile, JSON.stringify(message, null, 2) + '\n');
-          return null;
-        }
-      });
 
       // Return the updated config object
       return config;
