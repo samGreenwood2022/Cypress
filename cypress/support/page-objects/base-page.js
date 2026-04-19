@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 class BasePage {
-  constructor(baseURL) {
+  constructor(baseURL = "https://source.thenbs.com/") {
     this.baseURL = baseURL;
     this.email = "sam_greenwood26@hotmail.com"; // Declare the email variable
     this.password = "Felix1976"; // Declare the password variable

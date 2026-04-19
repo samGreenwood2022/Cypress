@@ -13,9 +13,8 @@ var {
   Before,
 } = require("@badeball/cypress-cucumber-preprocessor");
 
-// Define base URL and initialize page objects
-const baseURL = "https://source.thenbs.com/";
-const basePage = new BasePage(baseURL);
+// Initialize page objects
+const basePage = new BasePage();
 const manufacturerHomePage = new ManufacturerHomePage();
 
 // // Define email and password variables

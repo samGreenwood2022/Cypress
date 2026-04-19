@@ -124,7 +124,7 @@ class ManufacturerHomePage extends BasePage {
     cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
     cy.wait(3000); // Wait a bit after scrolling
     cy.matchImageSnapshot("dyson-homepage", {
-      failureThreshold: 0.2, // Allow up to 10% difference
+      failureThreshold: 0.2, // Allow up to 20% difference
       failureThresholdType: "percent",
     });
   }
