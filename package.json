@@ -11,16 +11,16 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^21.0.2",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.3",
-    "@cypress/webpack-preprocessor": "^6.0.2",
-    "@testing-library/cypress": "^10.0.2",
-    "axe-core": "^4.10.3",
-    "cypress": "^15.5.0",
-    "cypress-axe": "^1.6.0",
-    "cypress-image-snapshot": "^4.0.1",
-    "globals": "^15.11.0",
-    "webpack": "^5.96.1",
-    "webpack-cli": "^5.1.4"
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
+    "@cypress/webpack-preprocessor": "^7.1.0",
+    "@simonsmith/cypress-image-snapshot": "^10.0.3",
+    "@testing-library/cypress": "^10.1.0",
+    "axe-core": "^4.11.3",
+    "cypress": "^15.14.0",
+    "cypress-axe": "^1.7.0",
+    "globals": "^17.5.0",
+    "webpack": "^5.106.2",
+    "webpack-cli": "^7.0.2"
   }
 }

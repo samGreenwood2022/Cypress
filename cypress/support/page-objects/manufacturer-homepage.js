@@ -81,28 +81,28 @@ class ManufacturerHomePage extends BasePage {
     const tabs = [
       {
         element: this.elements.overviewTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
       },
       {
         element: this.elements.productsTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
       },
       //{ element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
       {
         element: this.elements.certificatesTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
       },
       {
         element: this.elements.literatureTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
       },
       {
         element: this.elements.caseStudiesTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
       },
       {
         element: this.elements.aboutTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
       },
     ];
 
@@ -150,12 +150,12 @@ class ManufacturerHomePage extends BasePage {
       // Parse the extracted JSON string into a JavaScript object
       const body = JSON.parse(match[1]);
 
-      // Assert the API returned a recognised country code 
+      // Assert the API returned a recognised country code
       expect(["GB"]).to.include(body.country);
 
       // Verify the UI region selector button exists and displays "UK",
       // confirming the frontend reflects the geolocation API result
-      cy.get('button[aria-label="Choose region"]', { timeout: 10000 })
+      cy.get('button[aria-label="Choose location and language"]', { timeout: 10000 })
         .should("exist")
         .invoke("text")
         .should("contain", "UK");

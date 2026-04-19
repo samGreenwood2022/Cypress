@@ -13,13 +13,13 @@ Feature: Dyson Homepage Regression Tests
   Background: Navigate to the Dyson manufacturer homepage
     Given I navigate to the Dyson manufacturer homepage
 
-  # Scenario Outline: Verify the manufacturers homepage URL contains expected text
-  #   Then The URL will contain the expected text "<expectedText>"
+  Scenario Outline: Verify the manufacturers homepage URL contains expected text
+    Then The URL will contain the expected text "<expectedText>"
 
-  #   Examples:
-  #     | expectedText         |
-  #     | /manufacturer/dyson/ |
-  #     | /overview            |
+    Examples:
+      | expectedText         |
+      | /manufacturer/dyson/ |
+      | /overview            |
 
   Scenario: I verify the telephone link has the correct number, protocol and href
     Then The number will be correct, the href will be as expected, and the telephone protocol will correct "tel:08003457788"
@@ -28,7 +28,7 @@ Feature: Dyson Homepage Regression Tests
     Then The h1 title text will be as expected "Dyson"
 
   Scenario: I verify the href attribute of the Source logo is as expected
-    Then The href attribute of the Source logo will be as expected "/"
+    Then The href attribute of the Source logo will be as expected "/en/"
 
   Scenario: I verify the external manufacturer link attribute contains the correct url
     Then The manufacturer website link is correct "https://www.dyson.co.uk/commercial/overview/architects-designers"
@@ -54,6 +54,9 @@ Feature: Dyson Homepage Regression Tests
 
   Scenario: Ensure the user can validate api response data from the star wars db
     Then The api request to the star wars db will return expected data
+
+  Scenario: Ensure the user can sign in with valid credentials
+    Then The user will be able to sign in with valid credentials
 
 
 
