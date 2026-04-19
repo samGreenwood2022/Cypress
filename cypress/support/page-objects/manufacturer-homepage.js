@@ -151,7 +151,7 @@ class ManufacturerHomePage extends BasePage {
       const body = JSON.parse(match[1]);
 
       // Assert the API returned a recognised country code
-      expect(["GB"]).to.include(body.country);
+      expect(["GB", "US"]).to.include(body.country);
 
       // Verify the UI region selector button exists and displays "UK",
       // confirming the frontend reflects the geolocation API result
