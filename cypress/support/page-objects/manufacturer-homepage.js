@@ -106,12 +106,15 @@ class ManufacturerHomePage extends BasePage {
       },
     ];
 
-    tabs.forEach((tab) => {
+    tabs.forEach((tab, index) => {
       tab
         .element()
         .should("exist", { timeout: 10000 }) // 10 second timeout for existence
         .and("be.visible")
-        .and("have.attr", "href", tab.href);
+        .and("have.attr", "href", tab.href)
+        .closest("[data-cy]")
+        .invoke("index")
+        .should("eq", index); // Verify the tab is in the correct sequential position
     });
   }
 
