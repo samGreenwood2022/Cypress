@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 class BasePage {
-  constructor(baseURL = "https://source.thenbs.com/") {
+  constructor(baseURL = "https://source.thenbs.com/en/") {
     this.baseURL = baseURL;
-    this.email = "sam_greenwood26@hotmail.com"; // Declare the email variable
-    this.password = "Felix1976"; // Declare the password variable
+    // this.email = "sam_greenwood26@hotmail.com"; // Declare the email variable
+    // this.password = "Felix1976"; // Declare the password variable
   }
 
   // Define selectors for elements on the page
@@ -44,15 +44,15 @@ class BasePage {
     cy.get("h1").should("have.text", expectedText); // Verify the h1 title text
   }
 
-  // Method to set the email variable
-  setEmail(email) {
-    this.email = email; // Set the email variable
-  }
+  // // Method to set the email variable
+  // setEmail(email) {
+  //   this.email = email; // Set the email variable
+  // }
 
-  // Method to set the password variable
-  setPassword(password) {
-    this.password = password; // Set the password variable
-  }
+  // // Method to set the password variable
+  // setPassword(password) {
+  //   this.password = password; // Set the password variable
+  // }
 
   // // Method to sign in to the application
   // signIn() {

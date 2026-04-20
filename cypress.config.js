@@ -19,6 +19,8 @@ module.exports = defineConfig({
       "live_ZNfnguGTdc4qwwfu7XQUHXykqrzzCyGQKNpovC44dbRfOvGOl2W2fPx2t1P30S7F", // Replace with your actual Cat API key
   },
   e2e: {
+    chromeWebSecurity: false,
+    experimentalModifyObstructiveThirdPartyCode: true,
     specPattern: [
       "cypress/e2e/5-features/*.feature", // Define path to feature files
       "cypress/e2e/1-getting-started/*.js", // Define path to feature files

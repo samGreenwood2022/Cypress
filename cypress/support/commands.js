@@ -54,7 +54,8 @@ Cypress.Commands.add('loginUser', () => {
         cy.contains('button', 'Sign in', { timeout: 10000 }).click();
     });
 
-    // Simple post-login assertion (adjust as needed for your app)
+    // Wait for OAuth redirect back to source before asserting
+    cy.url({ timeout: 15000 }).should('include', 'source.thenbs.com');
     cy.get('@currentUrl').then((currentUrl) => {
         cy.url().should('include', currentUrl);
     });
