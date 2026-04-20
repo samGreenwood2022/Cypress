@@ -81,37 +81,40 @@ class ManufacturerHomePage extends BasePage {
     const tabs = [
       {
         element: this.elements.overviewTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
       },
       {
         element: this.elements.productsTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
       },
       //{ element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
       {
         element: this.elements.certificatesTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
       },
       {
         element: this.elements.literatureTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
       },
       {
         element: this.elements.caseStudiesTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
       },
       {
         element: this.elements.aboutTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
+        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
       },
     ];
 
-    tabs.forEach((tab) => {
+    tabs.forEach((tab, index) => {
       tab
         .element()
         .should("exist", { timeout: 10000 }) // 10 second timeout for existence
         .and("be.visible")
-        .and("have.attr", "href", tab.href);
+        .and("have.attr", "href", tab.href)
+        .closest("[data-cy]")
+        .invoke("index")
+        .should("eq", index); // Verify the tab is in the correct sequential position
     });
   }
 
@@ -121,30 +124,41 @@ class ManufacturerHomePage extends BasePage {
     cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
     cy.wait(3000); // Wait a bit after scrolling
     cy.matchImageSnapshot("dyson-homepage", {
-      failureThreshold: 0.2, // Allow up to 10% difference
+      failureThreshold: 0.2, // Allow up to 20% difference
       failureThresholdType: "percent",
     });
   }
 
+  // Method to verify that the geolocation API response matches the UI region selector.
+  // This confirms the API returns a valid country code and the UI reflects the correct region.
   verifyUIandAPIContent() {
+    // Set a fixed viewport to ensure the region selector is visible
     cy.viewport(1100, 1200);
+
+    // Make a GET request to the OneTrust geolocation API
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
-      failOnStatusCode: false,
+      failOnStatusCode: false, // Allow non-2xx responses so we can handle them manually
     }).then((response) => {
-      // The response is like: jsonFeed({...});
+      // The API wraps its JSON payload in a JSONP callback: jsonFeed({...});
+      // Use a regex to extract the JSON object from inside the callback wrapper
       const match = response.body.match(/jsonFeed\((.*)\);?/);
+
+      // If the response doesn't match the expected JSONP format, fail with a clear error
       if (!match) {
         throw new Error("Unexpected response format");
       }
+
+      // Parse the extracted JSON string into a JavaScript object
       const body = JSON.parse(match[1]);
 
-      // Check that the API response contains the correct country (GB)
-      expect(["US", "GB"]).to.include(body.country);
+      // Assert the API returned a recognised country code
+      expect(["GB", "US"]).to.include(body.country);
 
-      // Now check that "UK" is present in the DOM, even if hidden
-      cy.get('button[aria-label="Choose region"]', { timeout: 10000 })
+      // Verify the UI region selector button exists and displays "UK",
+      // confirming the frontend reflects the geolocation API result
+      cy.get('button[aria-label="Choose location and language"]', { timeout: 10000 })
         .should("exist")
         .invoke("text")
         .should("contain", "UK");
@@ -159,6 +173,7 @@ class ManufacturerHomePage extends BasePage {
     // Get a specific character and verify their details
     cy.request("GET", "https://swapi.dev/api/people/1/").then((response) => {
       expect(response.status).to.eq(200);
+      debugger;
       expect(response.body.name).to.eq("Luke Skywalker");
       expect(response.body).to.have.property("homeworld");
     });

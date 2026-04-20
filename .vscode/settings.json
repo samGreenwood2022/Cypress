@@ -1,3 +1,8 @@
 {
-    "editor.codeActionsOnSave": {}
+    "editor.codeActionsOnSave": {},
+    "cucumberautocomplete.steps": [
+        "cypress/support/step_definitions/**/*.js"
+    ],
+    "cucumberautocomplete.syncfeatures": "cypress/e2e/5-features/*.feature",
+    "cucumberautocomplete.strictGherkinCompletion": true
 }

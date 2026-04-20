@@ -13,9 +13,8 @@ var {
   Before,
 } = require("@badeball/cypress-cucumber-preprocessor");
 
-// Define base URL and initialize page objects
-const baseURL = "https://source.thenbs.com/";
-const basePage = new BasePage(baseURL);
+// Initialize page objects
+const basePage = new BasePage();
 const manufacturerHomePage = new ManufacturerHomePage();
 
 // // Define email and password variables
@@ -35,47 +34,7 @@ Given(`I navigate to the Dyson manufacturer homepage`, () => {
     } catch {}
   });
 
-  // // Register intercept BEFORE navigation
-  // cy.intercept(
-  //   { method: "GET", url: "**/cookieconsentpub/v1/geo/location*" },
-  //   (req) => {
-  //     const isJsonp = /[?&](callback|jsonp)=/.test(req.url);
-  //     let cb = null;
-  //     try {
-  //       const u = new URL(req.url);
-  //       cb = u.searchParams.get("callback") || u.searchParams.get("jsonp");
-  //     } catch {}
-
-  //     if (isJsonp) {
-  //       const callbackName = cb && /^[\w$.]+$/.test(cb) ? cb : "jsonFeed";
-  //       req.reply({
-  //         statusCode: 200,
-  //         headers: {
-  //           "content-type": "application/javascript; charset=utf-8",
-  //           "cache-control": "no-store, no-cache, must-revalidate, proxy-revalidate",
-  //         },
-  //         body: `${callbackName}({"country":"CA","state":"ON","stateName":"Ontario","continent":"NA"});`,
-  //       });
-  //     } else {
-  //       req.reply({
-  //         statusCode: 200,
-  //         headers: {
-  //           "content-type": "application/json; charset=utf-8",
-  //           "cache-control": "no-store, no-cache, must-revalidate, proxy-revalidate",
-  //         },
-  //         body: { country: "CA", state: "ON", stateName: "Ontario", continent: "NA" },
-  //       });
-  //     }
-  //   }
-  // ).as("mockGeoLocation");
-
-  // Optional: block service worker to avoid stale cached geo
-  // cy.intercept("GET", "**/service-worker.js", { statusCode: 404 }).as("sw");
-
   basePage.visit(); // Visit the base URL
-  // cy.wait("@mockGeoLocation", { timeout: 1000 }); // Ensure the mocked request completes before interacting
-  // basePage.signIn(); // Sign in
-  // HomePage.acceptCookies(); // Accept cookies
   HomePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
