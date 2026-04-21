@@ -163,7 +163,7 @@ Then(
   }
 );
 
-// Then step definition to mock and verify api content in UI
+// Then step definition to log in using a custom command, which can be called from any page object or step definition file, demonstrating the reusability of custom commands across the test suite
 Then(
   `The user will be able to sign in with valid credentials`,
   () => {

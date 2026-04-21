@@ -165,9 +165,6 @@ class ManufacturerHomePage extends BasePage {
     });
   }
 
-  loginUser() {
-    cy.loginUser(); // Use the custom command to log in
-  }
 
   verifyStarWarsAPIResponse() {
     // Get a specific character and verify their details
