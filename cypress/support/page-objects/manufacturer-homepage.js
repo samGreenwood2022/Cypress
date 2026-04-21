@@ -158,13 +158,14 @@ class ManufacturerHomePage extends BasePage {
 
       // Verify the UI region selector button exists and displays "UK",
       // confirming the frontend reflects the geolocation API result
-      cy.get('button[aria-label="Choose location and language"]', { timeout: 10000 })
+      cy.get('button[aria-label="Choose location and language"]', {
+        timeout: 10000,
+      })
         .should("exist")
         .invoke("text")
         .should("contain", "UK");
     });
   }
-
 
   verifyStarWarsAPIResponse() {
     // Get a specific character and verify their details

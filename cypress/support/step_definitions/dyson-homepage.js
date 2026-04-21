@@ -48,7 +48,7 @@ Then(
   `The number will be correct, the href will be as expected, and the telephone protocol will correct {string}`,
   (telNo) => {
     manufacturerHomePage.verifyTelephoneLinkAttribute(telNo); // Verify the telephone link attribute
-  }
+  },
 );
 
 // Then step to verify the h1 title text
@@ -61,7 +61,7 @@ Then(
   `The href attribute of the Source logo will be as expected {string}`,
   (href) => {
     basePage.verifyLinkHref(href); // Verify the href attribute of the Source logo
-  }
+  },
 );
 
 // Then step to verify the manufacturer website link
@@ -90,7 +90,7 @@ Then(
         cy.task("log", violations);
         violations.forEach((violation) => {
           const nodes = Cypress.$(
-            violation.nodes.map((node) => node.target).join(",")
+            violation.nodes.map((node) => node.target).join(","),
           );
           Cypress.log({
             name: "a11y error!",
@@ -100,9 +100,9 @@ Then(
           });
         });
       },
-      { timeout: 10000 }
+      { timeout: 10000 },
     ); // Increase the timeout to 10 seconds
-  }
+  },
 );
 
 // Then step definition for the API test
@@ -128,7 +128,7 @@ Then(
       const emails = body.map((comment) => comment.email);
       expect(emails).to.include(expectedEmail);
     });
-  }
+  },
 );
 
 // Then step definition to verify the Dyson image attributes
@@ -136,7 +136,7 @@ Then(
   `The Dyson logo image should exist and have the correct attributes`,
   () => {
     manufacturerHomePage.verifyDysonImageAttributes(); // Verify the Dyson image attributes
-  }
+  },
 );
 
 // Then step definition to verify the Dyson navigation bar tabs
@@ -144,7 +144,7 @@ Then(
   `The Dyson navigation bar should have the correct tabs and href links`,
   () => {
     manufacturerHomePage.verifyTabs(); // Verify the Dyson image attributes
-  }
+  },
 );
 
 // Then step definition to verify the Dyson homepage image snapshot
@@ -152,7 +152,7 @@ Then(
   `The baseline image snapshot should match the current image snapshot`,
   () => {
     manufacturerHomePage.verifyImageSnapshot(); // Verify the image snapshot
-  }
+  },
 );
 
 // Then step definition to verify our different API test is working
@@ -160,21 +160,15 @@ Then(
   `The API response will contain expected data and UI will show location as GB`,
   () => {
     manufacturerHomePage.verifyUIandAPIContent();
-  }
+  },
 );
 
 // Then step definition to log in using a custom command, which can be called from any page object or step definition file, demonstrating the reusability of custom commands across the test suite
-Then(
-  `The user will be able to sign in with valid credentials`,
-  () => {
-    manufacturerHomePage.loginUser();
-  }
-);
+Then(`The user will be able to sign in with valid credentials`, () => {
+  manufacturerHomePage.loginUser();
+});
 
 // Then the api response will be as expected
-Then(
-  `The api request to the star wars db will return expected data`,
-  () => {
-    manufacturerHomePage.verifyStarWarsAPIResponse();
-  }
-);
+Then(`The api request to the star wars db will return expected data`, () => {
+  manufacturerHomePage.verifyStarWarsAPIResponse();
+});

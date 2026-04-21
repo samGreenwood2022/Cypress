@@ -45,7 +45,7 @@ class BasePage {
   }
 
   // Method to use custom command to log in, demonstrating the reusability of custom commands across the test suite, allowing for cleaner and more maintainable code by abstracting common actions into reusable functions that can be called from any page object or step definition file
-   loginUser() {
+  loginUser() {
     cy.loginUser(); // Use the custom command to log in
   }
 

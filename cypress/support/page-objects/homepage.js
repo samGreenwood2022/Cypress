@@ -21,25 +21,27 @@ class HomePage extends BasePage {
 
   // Create an alias for the search input so later steps can re-use it quickly
   aliasSearchInput() {
-    this.elements.searchInput().as('searchInput');
+    this.elements.searchInput().as("searchInput");
   }
 
   // Example: type into the aliased search input (after aliasSearchInput was called)
   typeInAliasedSearch(term) {
-    cy.get('@searchInput', { timeout: 15000 }) // retrieve previously aliased element
-      .should('be.visible')
+    cy.get("@searchInput", { timeout: 15000 }) // retrieve previously aliased element
+      .should("be.visible")
       .clear()
       .type(term);
   }
 
   // Alias a network request. Call BEFORE the action that triggers it.
   aliasGeoLocationRequest() {
-    cy.intercept('GET', '**/cookieconsentpub/v1/geo/location*').as('geoLocation');
+    cy.intercept("GET", "**/cookieconsentpub/v1/geo/location*").as(
+      "geoLocation",
+    );
   }
 
   // Wait on the aliased network call and assert its status code
   waitForGeoLocation() {
-    cy.wait('@geoLocation').its('response.statusCode').should('eq', 200);
+    cy.wait("@geoLocation").its("response.statusCode").should("eq", 200);
   }
 
   // Alias arbitrary data (e.g. value we compute and want later)
@@ -50,8 +52,11 @@ class HomePage extends BasePage {
 
   // Retrieve arbitrary data alias in a callback (example usage shown in comments below)
   logAliasedValue(name) {
-    cy.get(`@${name}`).then(val => {
-      Cypress.log({ name: 'aliased-data', message: `${name} = ${JSON.stringify(val)}` });
+    cy.get(`@${name}`).then((val) => {
+      Cypress.log({
+        name: "aliased-data",
+        message: `${name} = ${JSON.stringify(val)}`,
+      });
     });
   }
 
@@ -63,11 +68,11 @@ class HomePage extends BasePage {
     // Use the alias to type instead of calling the selector again
     this.typeInAliasedSearch(searchTerm); // Type the search term via alias
 
-      // this.clickToRemoveSurvey();
+    // this.clickToRemoveSurvey();
 
     // Wait for the search results to appear, alias the specific result, then click
     cy.contains("Dyson", { timeout: 10000 })
-      .as('dysonResult') // alias the found element
+      .as("dysonResult") // alias the found element
       .should("be.visible") // Ensure the 'Dyson' element is visible
       .click({ force: true }); // Click on the 'Dyson' element
 
@@ -77,7 +82,7 @@ class HomePage extends BasePage {
 
   clickToRemoveSurvey() {
     cy.wait(2000); // Add a 2 second delay
-    cy.get('button#hj-survey-toggle-1').then($btn => {
+    cy.get("button#hj-survey-toggle-1").then(($btn) => {
       if ($btn.length) {
         cy.wrap($btn).click();
       }
