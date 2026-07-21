@@ -1,7 +1,8 @@
 describe('The Cat API - Breeds', () => {
 
   const API_URL = 'https://api.thecatapi.com/v1';
-  const BEARER_TOKEN = cy.env('CAT_API_KEY');
+  // Key comes from cypress.env.json (gitignored) or the CYPRESS_CAT_API_KEY env var
+  const BEARER_TOKEN = Cypress.env('CAT_API_KEY');
 
   it('should validate the bearer token before fetching breeds', () => {
     // First, validate the token by hitting an auth-required endpoint (/favourites)

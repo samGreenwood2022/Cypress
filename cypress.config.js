@@ -14,10 +14,8 @@ const path = require("path");
 
 module.exports = defineConfig({
   projectId: "4afu4o", // Add this line for Cypress Cloud integration
-  env: {
-    CAT_API_KEY:
-      "live_ZNfnguGTdc4qwwfu7XQUHXykqrzzCyGQKNpovC44dbRfOvGOl2W2fPx2t1P30S7F", // Replace with your actual Cat API key
-  },
+  // Secrets (CAT_API_KEY, userEmail, userPassword) come from cypress.env.json,
+  // which is gitignored. See cypress.env.example.json for the expected shape.
   e2e: {
     chromeWebSecurity: false,
     experimentalModifyObstructiveThirdPartyCode: true,
