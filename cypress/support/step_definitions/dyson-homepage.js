@@ -1,10 +1,7 @@
 /// <reference types="cypress" />
 
-// Import page objects
-const HomePage = require("../page-objects/homepage");
-// Import BasePage via CommonJS export (no .default)
-const BasePage = require("../page-objects/base-page");
-const ManufacturerHomePage = require("../page-objects/manufacturer-homepage");
+// Ready-made page objects from the barrel file
+const { basePage, homePage, manufacturerHomePage } = require("../page-objects");
 
 // Import Cucumber preprocessor functions
 var {
@@ -12,16 +9,6 @@ var {
   Then,
   Before,
 } = require("@badeball/cypress-cucumber-preprocessor");
-
-// Initialize page objects
-const basePage = new BasePage();
-const manufacturerHomePage = new ManufacturerHomePage();
-
-// // Define email and password variables
-// const email = "sam_greenwood26@hotmail.com";
-// const password = "Felix1976";
-
-// (Removed Cucumber Before with cy.* to avoid executing outside a running test)
 
 // Given step to sign into NBS and visit the manufacturer home page
 Given(`I navigate to the Dyson manufacturer homepage`, () => {
@@ -35,7 +22,7 @@ Given(`I navigate to the Dyson manufacturer homepage`, () => {
   });
 
   basePage.visit(); // Visit the base URL
-  HomePage.enterSearchTerm("Dyson"); // Enter search term
+  homePage.enterSearchTerm("Dyson"); // Enter search term
 });
 
 // Then step to verify the URL contains the expected text

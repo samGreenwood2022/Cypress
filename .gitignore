@@ -1,3 +1,6 @@
 node_modules
 a11y-violations.log
 snapshots
+
+# Local secrets - never commit. Copy cypress.env.example.json to create it.
+cypress.env.json

@@ -49,10 +49,23 @@ Cypress.Commands.add("loginUser", () => {
   // Initiate sign in from the source domain
   cy.contains("button", "Sign in", { timeout: 10000 }).click();
 
+  // Credentials come from cypress.env.json (gitignored) or CYPRESS_* env vars.
+  // Never hardcode them here - this file is committed to git.
+  const email = Cypress.env("userEmail");
+  const password = Cypress.env("userPassword");
+
+  if (!email || !password) {
+    throw new Error(
+      "Missing login credentials. Copy cypress.env.example.json to " +
+        "cypress.env.json and fill in userEmail / userPassword, or set the " +
+        "CYPRESS_userEmail and CYPRESS_userPassword environment variables.",
+    );
+  }
+
   // Perform cross-origin login steps — selectors sourced from LoginPage POM
   const args = {
-    email: "sam_greenwood26@hotmail.com",
-    password: "Felix1976",
+    email,
+    password,
     selectors: LoginPage.selectors,
     timeout: LoginPage.timeout,
   };

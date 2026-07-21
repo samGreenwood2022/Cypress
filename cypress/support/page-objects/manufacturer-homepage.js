@@ -1,82 +1,82 @@
+/// <reference types="cypress" />
+
 const BasePage = require("./base-page");
 
+// A manufacturer's profile page, e.g. /en/manufacturer/dyson/...
 class ManufacturerHomePage extends BasePage {
-  // Define selectors on the manufacturer homepage
-  elements = {
-    telephoneLink: () => cy.get('a[action="telephone"]'), // Selector for the telephone link
-    favouritesIcon: () => cy.get("app-add-to-collection-button").first(), // Selector for the first favourites icon
-    permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'), // Selector for the permalink icon
-    manufacturerWebLink: () => cy.get('a[action="company-website"]'), // Selector for the manufacturer website link
-    contactManufacturerButton: () =>
-      cy.contains("button", "Contact manufacturer"), // Selector for the contact manufacturer button
-    h1Title: () => cy.get("h1"), // Selector for the h1 title
-    dysonImage: () => cy.get('img[alt="Dyson"]'), // Selector for the Dyson image
-    overviewTab: () => cy.get('[data-cy="overviewTab"]'), // Selector for the Overview tab
-    productsTab: () => cy.get('[data-cy="productsTab"]'), // Selector for the Products tab
-    cpdTab: () => cy.get('[data-cy="cpdTab"]'), // Selector for the CPD tab
-    certificatesTab: () => cy.get('[data-cy="certificatesTab"]'), // Selector for the Third party certifications tab
-    literatureTab: () => cy.get('[data-cy="literatureTab"]'), // Selector for the Literature tab
-    caseStudiesTab: () => cy.get('[data-cy="caseStudiesTab"]'), // Selector for the Case studies tab
-    aboutTab: () => cy.get('[data-cy="aboutTab"]'), // Selector for the About us tab
-  };
+  get elements() {
+    return {
+      ...super.elements, // Keep the shared selectors from BasePage
+      telephoneLink: () => cy.get('a[action="telephone"]'),
+      favouritesIcon: () => cy.get("app-add-to-collection-button").first(),
+      permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
+      manufacturerWebLink: () => cy.get('a[action="company-website"]'),
+      contactManufacturerButton: () =>
+        cy.contains("button", "Contact manufacturer"),
+      h1Title: () => cy.get("h1"),
+      dysonImage: () => cy.get('img[alt="Dyson"]'),
+      overviewTab: () => cy.get('[data-cy="overviewTab"]'),
+      productsTab: () => cy.get('[data-cy="productsTab"]'),
+      cpdTab: () => cy.get('[data-cy="cpdTab"]'),
+      certificatesTab: () => cy.get('[data-cy="certificatesTab"]'),
+      literatureTab: () => cy.get('[data-cy="literatureTab"]'),
+      caseStudiesTab: () => cy.get('[data-cy="caseStudiesTab"]'),
+      aboutTab: () => cy.get('[data-cy="aboutTab"]'),
+    };
+  }
 
-  // Method to verify the telephone link attribute
+  // Checks the phone number link, e.g. "tel:+448001217794"
   verifyTelephoneLinkAttribute(telNo) {
     this.elements
       .telephoneLink()
-      .should("exist", { timeout: 10000 }) // Ensure the telephone link element exists with a 10 second timeout
-      .and("have.attr", "href", telNo); // Verify the href attribute and Tel protocol
+      .should("exist", { timeout: 10000 })
+      .and("have.attr", "href", telNo);
   }
 
-  // Method to verify the h1 title text
+  // Overrides BasePage.verifyH1Text() to use this page's own h1 selector
   verifyH1Text(expectedText) {
     this.elements
       .h1Title()
-      .should("exist", { timeout: 10000 }) // Ensure the h1 title element exists
-      .and("have.text", expectedText); // Verify the text of the h1 element
+      .should("exist", { timeout: 10000 })
+      .and("have.text", expectedText);
   }
 
-  // Method to verify the favourites icon exists
   verifyFavIcon() {
-    this.elements.favouritesIcon().should("exist"); // Ensure the favourites icon element exists
+    this.elements.favouritesIcon().should("exist");
   }
 
-  // Method to verify the permalink icon exists
   verifyFavPermalinkIcon() {
-    this.elements.permalinkIcon().should("exist"); // Ensure the permalink icon element exists
+    this.elements.permalinkIcon().should("exist");
   }
 
-  // Method to verify the manufacturer website link attribute
   verifyManufacturerWebLink(href) {
     this.elements
       .manufacturerWebLink()
-      .should("exist") // Ensure the manufacturer website link element exists
-      .and("have.attr", "href", href); // Verify the href attribute
+      .should("exist")
+      .and("have.attr", "href", href);
   }
 
-  // Method to verify the contact manufacturer button text
   verifyContactManufacturerBtnTxt(btnTxt) {
     this.elements
       .contactManufacturerButton()
-      .should("exist", { timeout: 10000 }) // Ensure the contact manufacturer button element exists
-      .and("contain.text", btnTxt); // Verify the text of the button
+      .should("exist", { timeout: 10000 })
+      .and("contain.text", btnTxt);
   }
 
-  // Method to verify the Dyson image attributes
   verifyDysonImageAttributes() {
     this.elements
       .dysonImage()
-      .should("exist") // Ensure the Dyson image element exists
-      .and("have.attr", "loading", "lazy") // Verify the loading attribute is lazy
-      .and("have.attr", "alt", "Dyson") // Verify the alt attribute is Dyson
+      .should("exist")
+      .and("have.attr", "loading", "lazy")
+      .and("have.attr", "alt", "Dyson")
       .and(
         "have.attr",
         "src",
         "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976",
-      ); // Verify the src attribute
+      );
   }
 
-  // Method to verify the tabs are visible and have the correct href attributes
+  // Checks every tab links to the right page AND sits in the right order
   verifyTabs() {
     const tabs = [
       {
@@ -109,55 +109,47 @@ class ManufacturerHomePage extends BasePage {
     tabs.forEach((tab, index) => {
       tab
         .element()
-        .should("exist", { timeout: 10000 }) // 10 second timeout for existence
+        .should("exist", { timeout: 10000 })
         .and("be.visible")
         .and("have.attr", "href", tab.href)
         .closest("[data-cy]")
-        .invoke("index")
-        .should("eq", index); // Verify the tab is in the correct sequential position
+        .invoke("index") // Position among its siblings, should match the array order
+        .should("eq", index);
     });
   }
 
+  // Visual test: compares a screenshot against the saved baseline image
   verifyImageSnapshot() {
-    cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
-    cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
-    cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
-    cy.wait(3000); // Wait a bit after scrolling
+    cy.viewport(1000, 4410); // Must match the viewport the baseline was taken at
+    cy.wait(2000);
+    cy.scrollTo("bottom"); // Forces lazy-loaded images to render
+    cy.wait(3000);
     cy.matchImageSnapshot("dyson-homepage", {
-      failureThreshold: 0.2, // Allow up to 20% difference
+      failureThreshold: 0.2, // Tolerate up to 20% difference
       failureThresholdType: "percent",
     });
   }
 
-  // Method to verify that the geolocation API response matches the UI region selector.
-  // This confirms the API returns a valid country code and the UI reflects the correct region.
+  // Checks the geolocation API and the UI agree on the user's region
   verifyUIandAPIContent() {
-    // Set a fixed viewport to ensure the region selector is visible
-    cy.viewport(1100, 1200);
+    cy.viewport(1100, 1200); // Region selector is hidden on narrow screens
 
-    // Make a GET request to the OneTrust geolocation API
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
-      failOnStatusCode: false, // Allow non-2xx responses so we can handle them manually
+      failOnStatusCode: false, // Handle a bad status ourselves instead of failing instantly
     }).then((response) => {
-      // The API wraps its JSON payload in a JSONP callback: jsonFeed({...});
-      // Use a regex to extract the JSON object from inside the callback wrapper
+      // The API replies as JSONP - jsonFeed({...}) - so pull the JSON out of the wrapper
       const match = response.body.match(/jsonFeed\((.*)\);?/);
 
-      // If the response doesn't match the expected JSONP format, fail with a clear error
       if (!match) {
         throw new Error("Unexpected response format");
       }
 
-      // Parse the extracted JSON string into a JavaScript object
       const body = JSON.parse(match[1]);
-
-      // Assert the API returned a recognised country code
       expect(["GB", "US"]).to.include(body.country);
 
-      // Verify the UI region selector button exists and displays "UK",
-      // confirming the frontend reflects the geolocation API result
+      // Now confirm the UI shows the matching region
       cy.get('button[aria-label="Choose location and language"]', {
         timeout: 10000,
       })
@@ -167,11 +159,10 @@ class ManufacturerHomePage extends BasePage {
     });
   }
 
+  // Example of testing an API directly, with no UI involved
   verifyStarWarsAPIResponse() {
-    // Get a specific character and verify their details
     cy.request("GET", "https://swapi.dev/api/people/1/").then((response) => {
       expect(response.status).to.eq(200);
-      debugger;
       expect(response.body.name).to.eq("Luke Skywalker");
       expect(response.body).to.have.property("homeworld");
     });
