@@ -28,10 +28,10 @@ Feature: Dyson Homepage Regression Tests
     Then The h1 title text will be as expected "Dyson"
 
   Scenario: I verify the href attribute of the Source logo is as expected
-    Then The href attribute of the Source logo will be as expected "/en/"
+    Then The href attribute of the Source logo will be as expected "/en/gb"
 
   Scenario: I verify the external manufacturer link attribute contains the correct url
-    Then The manufacturer website link is correct "https://www.dyson.co.uk/commercial/overview/architects-designers"
+    Then The manufacturer website link is correct "https://www.dyson.co.uk/commercial/overview"
 
   Scenario: I verify the contact manufacturer button shows the correct text
     Then The button will display the correct text "Contact manufacturer"

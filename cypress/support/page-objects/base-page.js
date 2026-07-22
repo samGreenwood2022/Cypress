@@ -3,7 +3,7 @@
 // Shared parent for every page object.
 // Anything here is available on all pages, so it only needs writing once.
 class BasePage {
-  constructor(baseURL = "https://source.thenbs.com/en/") {
+  constructor(baseURL = "https://source.thenbs.com/en/gb") {
     this.baseURL = baseURL;
   }
 
