@@ -81,28 +81,28 @@ class ManufacturerHomePage extends BasePage {
     const tabs = [
       {
         element: this.elements.overviewTab,
-        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
       },
       {
         element: this.elements.productsTab,
-        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
       },
-      //{ element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
+      //{ element: this.elements.cpdTab, href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
       {
         element: this.elements.certificatesTab,
-        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
       },
       {
         element: this.elements.literatureTab,
-        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
       },
       {
         element: this.elements.caseStudiesTab,
-        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
       },
       {
         element: this.elements.aboutTab,
-        href: "/en/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
       },
     ];
 
