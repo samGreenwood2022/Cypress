@@ -1,80 +1,49 @@
 /// <reference types="cypress" />
 
+// Shared parent for every page object.
+// Anything here is available on all pages, so it only needs writing once.
 class BasePage {
-  constructor(baseURL) {
+  constructor(baseURL = "https://source.thenbs.com/en/gb") {
     this.baseURL = baseURL;
-    this.email = "sam_greenwood26@hotmail.com"; // Declare the email variable
-    this.password = "Felix1976"; // Declare the password variable
   }
 
-  // Define selectors for elements on the page
-  elements = {
-    sourceLogo: () => cy.get("app-product-logo-with-name").first(), // Selector for the first source logo
-    signInField: () => cy.get("#Identification_Email"), // Selector for the sign-in field
-    passwordField: () => cy.get("#Authentication_Password"), // Selector for the password field
-    submitButton: () => cy.get(".submit-button"), // Selector for the submit button
-    nextButton: () => cy.get("#nextButton"), // Selector for the next button
-  };
+  // Selectors are arrow functions so Cypress only looks the element up when
+  // it's actually used, not when the page object is created.
+  // A getter (not a field) lets child pages add to this list with
+  // `{ ...super.elements, ... }` instead of replacing it.
+  get elements() {
+    return {
+      sourceLogo: () => cy.get("app-product-logo-with-name").first(),
+    };
+  }
 
-  // Method to verify the href attribute of the source logo
+  visit() {
+    cy.visit(this.baseURL);
+  }
+
+  clickSourceLogo() {
+    this.elements.sourceLogo().click();
+  }
+
   verifyLinkHref(hrefText) {
     this.elements
       .sourceLogo()
-      .find("a") // Locate the <a> tag within <app-product-logo-with-name>, useful for targeting nested attributes
-      .should("have.attr", "href", hrefText); // Verify the href attribute
+      .find("a") // The href lives on the <a> nested inside the logo component
+      .should("have.attr", "href", hrefText);
   }
 
-  // Method to visit the base URL
-  visit() {
-    cy.visit(this.baseURL); // Visit the base URL
-  }
-
-  // Method to click the source logo
-  clickSourceLogo() {
-    this.elements.sourceLogo().click(); // Click the source logo
-  }
-
-  // Method to verify the URL contains the expected text
   verifyUrlContents(text) {
-    cy.url().should("include", text); // Verify the URL contains the expected text
+    cy.url().should("include", text);
   }
 
-  // Method to verify the h1 title text
   verifyH1Text(expectedText) {
-    cy.get("h1").should("have.text", expectedText); // Verify the h1 title text
+    cy.get("h1").should("have.text", expectedText);
   }
 
-  // Method to set the email variable
-  setEmail(email) {
-    this.email = email; // Set the email variable
-  }
-
-  // Method to set the password variable
-  setPassword(password) {
-    this.password = password; // Set the password variable
-  }
-
-  // Method to sign in to the application
-  signIn() {
-    this.elements
-      .signInField()
-      .should("exist") // Ensure the sign-in field exists
-      .should("be.visible") // Ensure the sign-in field is visible
-      .type(this.email); // Type the email into the sign-in field
-
-    this.elements.submitButton().click(); // Click the submit button
-
-    this.elements
-      .passwordField()
-      .should("exist") // Ensure the password field exists
-      .should("be.visible") // Ensure the password field is visible
-      .type(this.password); // Type the password into the password field
-
-    this.elements.nextButton().click(); // Click the next button
-
-    // Navigate to the Source website where we will begin our tests
-    cy.visit('https://source.thenbs.com/');
+  // Wraps the custom command from support/commands.js so any page can log in
+  loginUser() {
+    cy.loginUser();
   }
 }
 
-module.exports = BasePage; // Export the class using CommonJS syntax
+module.exports = BasePage;

@@ -1,11 +1,11 @@
 class MyCustomClass {
-    constructor(name) {
-      this.name = name;
-    }
-  
-    greet() {
-      return `Hello, ${this.name}!`;
-    }
+  constructor(name) {
+    this.name = name;
   }
-  
-  export default MyCustomClass;
+
+  greet() {
+    return `Hello, ${this.name}!`;
+  }
+}
+
+export default MyCustomClass;

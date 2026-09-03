@@ -1,93 +1,88 @@
 /// <reference types="cypress" />
 
-const BasePage = require("./base-page"); // Use require to import the BasePage class
+const BasePage = require("./base-page");
 
+// The Source search homepage
 class HomePage extends BasePage {
-  // Define selectors for elements on the homepage
-  elements = {
-    searchInput: () => cy.get('[data-cy="searchFieldSearch"]').first(), // Selector for the search input field
-    acceptCookiesButton: () =>
-      cy.contains("button", "Accept All Cookies", { timeout: 10000 }), // Selector for the accept cookies button
-  };
-
-  /* --------------------------------------------------------------------------
-   * ALIAS HELP (Beginner friendly)
-   * An alias in Cypress lets you save ("alias") something you might want to
-   * re-use later: DOM elements, network requests, or arbitrary data.
-   * You create an alias with .as('name') and later access it with:
-   *   cy.get('@name')  (for elements / data)
-   *   cy.wait('@name') (for network requests / intercepts)
-   * ------------------------------------------------------------------------ */
-
-  // Create an alias for the search input so later steps can re-use it quickly
-  aliasSearchInput() {
-    this.elements.searchInput().as('searchInput');
+  get elements() {
+    return {
+      ...super.elements, // Keep the shared selectors from BasePage
+      searchInput: () => cy.get('[data-cy="searchFieldSearch"]').first(),
+      acceptCookiesButton: () =>
+        cy.contains("button", "Accept All Cookies", { timeout: 10000 }),
+    };
   }
 
-  // Example: type into the aliased search input (after aliasSearchInput was called)
+  /* Aliases
+   * An alias saves something under a name so you can reuse it later:
+   *   .as("name")      saves an element, request or value
+   *   cy.get("@name")  reads back an element or value
+   *   cy.wait("@name") waits for a saved network request
+   * The methods below are examples of each. */
+
+  // Save the search input so later steps don't have to re-query it
+  aliasSearchInput() {
+    this.elements.searchInput().as("searchInput");
+  }
+
+  // Type into the aliased input. Call aliasSearchInput() first.
   typeInAliasedSearch(term) {
-    cy.get('@searchInput', { timeout: 15000 }) // retrieve previously aliased element
-      .should('be.visible')
+    cy.get("@searchInput", { timeout: 15000 })
+      .should("be.visible")
       .clear()
       .type(term);
   }
 
-  // Alias a network request. Call BEFORE the action that triggers it.
+  // Watch for a network request. Must be called BEFORE the action that triggers it.
   aliasGeoLocationRequest() {
-    cy.intercept('GET', '**/cookieconsentpub/v1/geo/location*').as('geoLocation');
+    cy.intercept("GET", "**/cookieconsentpub/v1/geo/location*").as(
+      "geoLocation",
+    );
   }
 
-  // Wait on the aliased network call and assert its status code
+  // Wait for that request to finish and check it succeeded
   waitForGeoLocation() {
-    cy.wait('@geoLocation').its('response.statusCode').should('eq', 200);
+    cy.wait("@geoLocation").its("response.statusCode").should("eq", 200);
   }
 
-  // Alias arbitrary data (e.g. value we compute and want later)
+  // Save any plain value under an alias. cy.wrap() hands it to Cypress first.
   aliasComputedValue(name, value) {
-    // cy.wrap wraps a value so Cypress can manage it; then we alias it
     cy.wrap(value).as(name);
   }
 
-  // Retrieve arbitrary data alias in a callback (example usage shown in comments below)
+  // Read a saved value back and print it to the Cypress command log
   logAliasedValue(name) {
-    cy.get(`@${name}`).then(val => {
-      Cypress.log({ name: 'aliased-data', message: `${name} = ${JSON.stringify(val)}` });
+    cy.get(`@${name}`).then((val) => {
+      Cypress.log({
+        name: "aliased-data",
+        message: `${name} = ${JSON.stringify(val)}`,
+      });
     });
   }
 
-  // Method to enter a search term and click on the 'Dyson' element in the search results
+  // Search for a term, then open the "Dyson" result
   enterSearchTerm(searchTerm) {
-    // Create alias for the search input (demonstration)
     this.aliasSearchInput();
+    this.typeInAliasedSearch(searchTerm);
 
-    // Use the alias to type instead of calling the selector again
-    this.typeInAliasedSearch(searchTerm); // Type the search term via alias
-
-      // this.clickToRemoveSurvey();
-
-    // Wait for the search results to appear, alias the specific result, then click
     cy.contains("Dyson", { timeout: 10000 })
-      .as('dysonResult') // alias the found element
-      .should("be.visible") // Ensure the 'Dyson' element is visible
-      .click({ force: true }); // Click on the 'Dyson' element
-
-    // Example of re-using that element later (purely illustrative):
-    // cy.get('@dysonResult').should('have.text', 'Dyson');
+      .as("dysonResult")
+      .should("be.visible")
+      .click({ force: true }); // force: the element can be overlapped by the survey popup
   }
 
   clickToRemoveSurvey() {
-    cy.wait(2000); // Add a 2 second delay
-    cy.get('button#hj-survey-toggle-1').then($btn => {
+    cy.wait(2000);
+    cy.get("button#hj-survey-toggle-1").then(($btn) => {
       if ($btn.length) {
         cy.wrap($btn).click();
       }
     });
   }
 
-  // Method to accept cookies
   acceptCookies() {
-    this.elements.acceptCookiesButton().click(); // Click the accept cookies button
+    this.elements.acceptCookiesButton().click();
   }
 }
 
-module.exports = new HomePage(); // Export an instance of HomePage using CommonJS syntax
+module.exports = HomePage;

@@ -1,160 +1,172 @@
+/// <reference types="cypress" />
+
 const BasePage = require("./base-page");
 
+// A manufacturer's profile page, e.g. /en/manufacturer/dyson/...
 class ManufacturerHomePage extends BasePage {
-  // Define selectors on the manufacturer homepage
-  elements = {
-    telephoneLink: () => cy.get('a[action="telephone"]'), // Selector for the telephone link
-    favouritesIcon: () => cy.get("app-add-to-collection-button").first(), // Selector for the first favourites icon
-    permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'), // Selector for the permalink icon
-    manufacturerWebLink: () => cy.get('a[action="company-website"]'), // Selector for the manufacturer website link
-    contactManufacturerButton: () =>
-      cy.contains("button", "Contact manufacturer"), // Selector for the contact manufacturer button
-    h1Title: () => cy.get("h1"), // Selector for the h1 title
-    dysonImage: () => cy.get('img[alt="Dyson"]'), // Selector for the Dyson image
-    overviewTab: () => cy.get('[data-cy="overviewTab"]'), // Selector for the Overview tab
-    productsTab: () => cy.get('[data-cy="productsTab"]'), // Selector for the Products tab
-    cpdTab: () => cy.get('[data-cy="cpdTab"]'), // Selector for the CPD tab
-    certificatesTab: () => cy.get('[data-cy="certificatesTab"]'), // Selector for the Third party certifications tab
-    literatureTab: () => cy.get('[data-cy="literatureTab"]'), // Selector for the Literature tab
-    caseStudiesTab: () => cy.get('[data-cy="caseStudiesTab"]'), // Selector for the Case studies tab
-    aboutTab: () => cy.get('[data-cy="aboutTab"]'), // Selector for the About us tab
-  };
+  get elements() {
+    return {
+      ...super.elements, // Keep the shared selectors from BasePage
+      telephoneLink: () => cy.get('a[action="telephone"]'),
+      favouritesIcon: () => cy.get("app-add-to-collection-button").first(),
+      permalinkIcon: () => cy.get('[data-cy="copyPermalinkButton"]'),
+      manufacturerWebLink: () => cy.get('a[action="company-website"]'),
+      contactManufacturerButton: () =>
+        cy.contains("button", "Contact manufacturer"),
+      h1Title: () => cy.get("h1"),
+      dysonImage: () => cy.get('img[alt="Dyson"]'),
+      overviewTab: () => cy.get('[data-cy="overviewTab"]'),
+      productsTab: () => cy.get('[data-cy="productsTab"]'),
+      cpdTab: () => cy.get('[data-cy="cpdTab"]'),
+      certificatesTab: () => cy.get('[data-cy="certificatesTab"]'),
+      literatureTab: () => cy.get('[data-cy="literatureTab"]'),
+      caseStudiesTab: () => cy.get('[data-cy="caseStudiesTab"]'),
+      aboutTab: () => cy.get('[data-cy="aboutTab"]'),
+    };
+  }
 
-  // Method to verify the telephone link attribute
+  // Checks the phone number link, e.g. "tel:+448001217794"
   verifyTelephoneLinkAttribute(telNo) {
     this.elements
       .telephoneLink()
-      .should("exist", { timeout: 10000 }) // Ensure the telephone link element exists with a 10 second timeout
-      .and("have.attr", "href", telNo); // Verify the href attribute and Tel protocol
+      .should("exist", { timeout: 10000 })
+      .and("have.attr", "href", telNo);
   }
 
-  // Method to verify the h1 title text
+  // Overrides BasePage.verifyH1Text() to use this page's own h1 selector
   verifyH1Text(expectedText) {
     this.elements
       .h1Title()
-      .should("exist", { timeout: 10000 }) // Ensure the h1 title element exists
-      .and("have.text", expectedText); // Verify the text of the h1 element
+      .should("exist", { timeout: 10000 })
+      .and("have.text", expectedText);
   }
 
-  // Method to verify the favourites icon exists
   verifyFavIcon() {
-    this.elements.favouritesIcon().should("exist"); // Ensure the favourites icon element exists
+    this.elements.favouritesIcon().should("exist");
   }
 
-  // Method to verify the permalink icon exists
   verifyFavPermalinkIcon() {
-    this.elements.permalinkIcon().should("exist"); // Ensure the permalink icon element exists
+    this.elements.permalinkIcon().should("exist");
   }
 
-  // Method to verify the manufacturer website link attribute
   verifyManufacturerWebLink(href) {
     this.elements
       .manufacturerWebLink()
-      .should("exist") // Ensure the manufacturer website link element exists
-      .and("have.attr", "href", href); // Verify the href attribute
+      .should("exist")
+      .and("have.attr", "href", href);
   }
 
-  // Method to verify the contact manufacturer button text
   verifyContactManufacturerBtnTxt(btnTxt) {
     this.elements
       .contactManufacturerButton()
-      .should("exist", { timeout: 10000 }) // Ensure the contact manufacturer button element exists
-      .and("contain.text", btnTxt); // Verify the text of the button
+      .should("exist", { timeout: 10000 })
+      .and("contain.text", btnTxt);
   }
 
-  // Method to verify the Dyson image attributes
   verifyDysonImageAttributes() {
     this.elements
       .dysonImage()
-      .should("exist") // Ensure the Dyson image element exists
-      .and("have.attr", "loading", "lazy") // Verify the loading attribute is lazy
-      .and("have.attr", "alt", "Dyson") // Verify the alt attribute is Dyson
+      .should("exist")
+      .and("have.attr", "loading", "lazy")
+      .and("have.attr", "alt", "Dyson")
       .and(
         "have.attr",
         "src",
-        "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976"
-      ); // Verify the src attribute
+        "https://asset.source.thenbs.com/api/thumbnail/726605f6-42fe-4370-ae91-970cd904f976",
+      );
   }
 
-  // Method to verify the tabs are visible and have the correct href attributes
+  // Checks every tab links to the right page AND sits in the right order
   verifyTabs() {
     const tabs = [
       {
         element: this.elements.overviewTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview",
       },
       {
         element: this.elements.productsTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/products",
       },
-      //{ element: this.elements.cpdTab, href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
+      //{ element: this.elements.cpdTab, href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/cpd" },
       {
         element: this.elements.certificatesTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/third-party-certifications",
       },
       {
         element: this.elements.literatureTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/literature",
       },
       {
         element: this.elements.caseStudiesTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/case-studies",
       },
       {
         element: this.elements.aboutTab,
-        href: "/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
+        href: "/en/gb/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/about",
       },
     ];
 
-    tabs.forEach((tab) => {
+    tabs.forEach((tab, index) => {
       tab
         .element()
-        .should("exist", { timeout: 10000 }) // 10 second timeout for existence
+        .should("exist", { timeout: 10000 })
         .and("be.visible")
-        .and("have.attr", "href", tab.href);
+        .and("have.attr", "href", tab.href)
+        .closest("[data-cy]")
+        .invoke("index") // Position among its siblings, should match the array order
+        .should("eq", index);
     });
   }
 
+  // Visual test: compares a screenshot against the saved baseline image
   verifyImageSnapshot() {
-    cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
-    cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
-    cy.scrollTo("bottom"); // Scroll to the bottom to ensure all content is rendered
-    cy.wait(3000); // Wait a bit after scrolling
+    cy.viewport(1000, 4410); // Must match the viewport the baseline was taken at
+    cy.wait(2000);
+    cy.scrollTo("bottom"); // Forces lazy-loaded images to render
+    cy.wait(3000);
     cy.matchImageSnapshot("dyson-homepage", {
-      failureThreshold: 0.20, // Allow up to 10% difference
+      failureThreshold: 0.2, // Tolerate up to 20% difference
       failureThresholdType: "percent",
     });
   }
 
+  // Checks the geolocation API and the UI agree on the user's region
   verifyUIandAPIContent() {
-    cy.viewport(1100, 1200)
+    cy.viewport(1100, 1200); // Region selector is hidden on narrow screens
+
     cy.request({
       method: "GET",
       url: "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
-      failOnStatusCode: false,
+      failOnStatusCode: false, // Handle a bad status ourselves instead of failing instantly
     }).then((response) => {
-      // The response is like: jsonFeed({...});
+      // The API replies as JSONP - jsonFeed({...}) - so pull the JSON out of the wrapper
       const match = response.body.match(/jsonFeed\((.*)\);?/);
+
       if (!match) {
         throw new Error("Unexpected response format");
       }
+
       const body = JSON.parse(match[1]);
+      expect(["GB", "US"]).to.include(body.country);
 
-      // Check that the API response contains the correct country (GB)
-      expect(["US", "GB"]).to.include(body.country);
-
-      // Now check that "UK" is present in the DOM, even if hidden
-      cy.get('button[aria-label="Choose region"]', { timeout: 10000 })
+      // Now confirm the UI shows the matching region
+      cy.get('button[aria-label="Choose location and language"]', {
+        timeout: 10000,
+      })
         .should("exist")
         .invoke("text")
         .should("contain", "UK");
     });
   }
 
-  loginUser() {
-    cy.loginUser(); // Use the custom command to log in
+  // Example of testing an API directly, with no UI involved
+  verifyStarWarsAPIResponse() {
+    cy.request("GET", "https://swapi.dev/api/people/1/").then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.name).to.eq("Luke Skywalker");
+      expect(response.body).to.have.property("homeworld");
+    });
   }
-
 }
 
 module.exports = ManufacturerHomePage;
